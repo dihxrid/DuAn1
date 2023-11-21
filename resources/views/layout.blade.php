@@ -98,12 +98,12 @@
                                     if ($customer_id != NULL) {
 
                                         ?>
-                                        <li><a href="{{URL::to('/show-cart')}}">Giở Hàng</a></li>
+                                        <li><a href="{{URL::to('/show-cart')}}">Giỏ Hàng</a></li>
                                         <?php
                                     }else{
                                         ?>
 
-                                        <li><a href="{{URL::to('/login-checkout')}}">Giở Hàng</a></li>
+                                        <li><a href="{{URL::to('/login-checkout')}}">Giỏ Hàng</a></li>
                                         <?php 
                                     }      
                                         ?>
