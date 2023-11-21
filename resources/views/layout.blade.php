@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fruit | Fruit </title>
+    <title>HTfruit |  Fresh Fruit </title>
 
     <!-- Google Font -->
    <!-- <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet"-->
@@ -34,7 +34,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> hello@quang.com</li>
+                                <li><i class="fa fa-envelope"></i> buiminhty2004@gmail.com</li>
                                 <li>Free Shipping khi mua trên 500k</li>
                             </ul>
                         </div>
@@ -84,7 +84,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="{{-- header__logo --}}">
-                        <a href="{{URL::to('/trang-chu')}}"><image style="width: 650px;height: 120px;margin-left: 5px;" src="{{URL::to('/frontend/image/logo.png')}}" alt=""></a>
+                        <a href="{{URL::to('/trang-chu')}}"><image style="margin-left: 65px;margin-top:20px" src="{{URL::to('/frontend/image/logo.png')}}" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -212,7 +212,7 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
+                                <h5>+84 0943809337</h5>
                                 <span>hỗ trợ 24/7</span>
                             </div>
                         </div>
@@ -396,11 +396,11 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="{{URL::to('/trang-chu')}}"><image width="100" height="100" src="{{URL::to('/frontend/image/logo.png')}}" alt=""></a>
+                            <a href="{{URL::to('/trang-chu')}}"><image width="120"  src="{{URL::to('/frontend/image/logo.png')}}" alt=""></a>
                         </div>
                         <ul>
-                            <li>Phone: +65 11.188.888</li>
-                            <li>Email: hello@quang.com</li>
+                            <li>Phone: +84 0943809337</li>
+                            <li>Email: buiminhty2004@gmail.com</li>
                         </ul>
                     </div>
                 </div>
