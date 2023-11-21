@@ -76,7 +76,7 @@ Route::post('/update-product/{product_id}','App\Http\Controllers\Product@update_
 //cart
 Route::post('/save-cart','App\Http\Controllers\CartController@save_cart');
 Route::post('/update-cart','App\Http\Controllers\CartController@update_cart');
-Route::get('/show-cart/','App\Http\Controllers\CartController@show_cart');
+Route::get('/show-cart','App\Http\Controllers\CartController@show_cart');
 Route::get('/delete-cart/{rowId}','App\Http\Controllers\CartController@delete_cart');
 
 //checkpout

@@ -32,7 +32,7 @@ class AdminController extends Controller
     }
     public function dashboard(Request $request){
     	$admin_name = $request->admin_name;
-    	$admin_password = md5($request->admin_password);
+    	$admin_password = $request->admin_password;
 
     	$result = DB::table('tbl_admin')->where('admin_name',$admin_name)->where('admin_password',$admin_password)->first();
     	if ($result) {
@@ -42,7 +42,7 @@ class AdminController extends Controller
     	}
     	else{
 
-			Session::put('message','*Password or Username fail*');
+			Session::put('message','*Tên đăng nhập hoặc mật khẩu không đúng*');
 			return Redirect::to('/admin');
 
 
