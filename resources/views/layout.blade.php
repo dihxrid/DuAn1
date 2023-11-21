@@ -59,6 +59,7 @@
                             <div class="header__top__right__auth">
                                 {{-- kiểm tra id khách hàng nếu chưa bắt đăng nhập --}}
                                 <?php
+                                    use Illuminate\Support\Facades\Session;
                                     $customer_id = Session::get('customer_id');
                                     if ($customer_id != NULL) {
 

@@ -11,6 +11,7 @@
                     <div class="shoping__cart__table">
                         {{-- lấy ra những gì đã thềm vào giỏ hàng --}}
                         <?php
+                        use Gloudemans\Shoppingcart\Facades\Cart;
                         $content = Cart::content();
                         
                         ?>
@@ -106,6 +107,7 @@
                         </ul>
                         {{-- kiểm tra id khách hàng nếu chưa bắt đăng nhập --}}
                         <?php
+                                    use Illuminate\Support\Facades\Session;
                                     $customer_id = Session::get('customer_id');
                                     if ($customer_id != NULL) {
 

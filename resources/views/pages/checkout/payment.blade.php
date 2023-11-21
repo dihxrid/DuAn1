@@ -11,6 +11,7 @@
                     <div class="shoping__cart__table">
                         {{-- lấy ra những gì đã thềm vào giỏ hàng --}}
                         <?php
+                        use Gloudemans\Shoppingcart\Facades\Cart;
                         $content = Cart::content();
                         
                         ?>

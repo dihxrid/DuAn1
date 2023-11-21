@@ -9,6 +9,7 @@
                     <h5>Liệt Kê Thương Hiệu Sản Phẩm</h5>
                     <span class="label">
                          <?php
+                                use Illuminate\Support\Facades\Session;
                                 $message = Session::get('message');
                                 if ($message) {
                                    echo '<span class="" >'.$message.'</span>';

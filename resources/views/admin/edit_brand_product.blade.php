@@ -8,7 +8,8 @@
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
           <h5>Cập Nhập Thương Hiệu Sản Phẩm</h5>
           <span class="label">
-                 <?php
+                 <?php  
+                        use Illuminate\Support\Facades\Session;
                         $message = Session::get('message');
                         if ($message) {
                            echo '<span class="" >'.$message.'</span>';
