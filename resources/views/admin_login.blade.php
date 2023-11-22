@@ -57,7 +57,7 @@
             </button>
             <br>
             <?php
-                    use Illuminate\Support\Facades\Session;
+                   // use Illuminate\Support\Facades\Session;
                     $message = Session::get('message');
                     if ($message) {
                        echo '<span class="error_text" >'.$message.'</span>';

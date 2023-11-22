@@ -9,7 +9,7 @@
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="{{URL::to('/upload/product/'.$value->product_image)}}" alt="">
+                                src="{{URL::to('public/upload/product/'.$value->product_image)}}" alt="">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="{{URL::to('/frontend/image/product/details/product-details-2.jpg')}}"
@@ -115,7 +115,7 @@
                 <div class="categories__slider owl-carousel">
                     @foreach($related_product as $key => $lienquan)
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="{{URL::to('/upload/product/'.$lienquan->product_image)}}">
+                        <div class="categories__item set-bg" data-setbg="{{URL::to('public/upload/product/'.$lienquan->product_image)}}">
                             <h5><a href="{{URL::to('chi-tiet-san-pham/'.$lienquan->product_id)}}">{{($lienquan->product_name)}}</a></h5>
                         </div>
                     </div>

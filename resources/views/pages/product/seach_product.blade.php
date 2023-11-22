@@ -13,7 +13,7 @@
                 @foreach($seach_product as $key => $product)
                 <div class="col-lg-4 col-md-4 col-sm-6 mix">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="{{URL::to('/upload/product/'.$product->product_image)}}">
+                        <div class="featured__item__pic set-bg" data-setbg="{{URL::to('public/upload/product/'.$product->product_image)}}">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>s
                                 <li><a href="{{URL::to('chi-tiet-san-pham/'.$product->product_id)}}"><i class="fa fa-bookmark"></i></a></li>

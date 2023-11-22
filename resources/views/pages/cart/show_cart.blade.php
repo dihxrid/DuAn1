@@ -11,7 +11,7 @@
                     <div class="shoping__cart__table">
                         {{-- lấy ra những gì đã thềm vào giỏ hàng --}}
                         <?php
-                        use Gloudemans\Shoppingcart\Facades\Cart;
+                        //use Gloudemans\Shoppingcart\Facades\Cart;
                         $content = Cart::content();
                         
                         ?>
@@ -30,7 +30,7 @@
                                 @foreach($content as $v_content)
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="{{URL::to('/upload/product/'.$v_content->options->image)}}" width="50px" alt="">
+                                        <img src="{{URL::to('public/upload/product/'.$v_content->options->image)}}" width="50px" alt="">
                                         <h5>{{($v_content->name)}}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
