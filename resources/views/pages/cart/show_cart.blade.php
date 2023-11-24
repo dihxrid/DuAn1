@@ -48,7 +48,7 @@
 
 
                                               <input class="plus is-form" type="button" value="+"/>
-                                            <input class="site-btn" type="submit" name="update_qty" value="Cập Nhập">
+                                            <input class="primary-btn" type="submit" name="update_qty" value="Cập Nhập">
                                             </div>
                                         </form>
                                         
@@ -72,19 +72,19 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="{{URL::to('/trang-chu')}}" class="primary-btn cart-btn">Tiếp Tục Mua Sắm</a>
+                        <a href="{{URL::to('/trang-chu')}}" class="primary-btn">Tiếp Tục Mua Sắm</a>
                     </div>
                 </form>
                 </div>
                 <div class="col-lg-6">
                     <div class="shoping__continue">
-                        <div class="shoping__discount">
+                        <!-- <div class="shoping__discount">
                             <h5>Mã Khuyến Mãi</h5>
                             <form action="#">
                                 <input type="text" placeholder="Enter your coupon code">
                                 <button type="submit" class="site-btn">Nhập</button>
 
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6">

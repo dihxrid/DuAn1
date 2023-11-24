@@ -34,7 +34,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> buiminhty2004@gmail.com</li>
+                                <li><i class="fa fa-envelope"></i> htfresh@gmail.com</li>
                                 <li>Free Shipping khi mua trên 500k</li>
                             </ul>
                         </div>
@@ -47,7 +47,7 @@
                                 <a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
                                 <a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p"></i></a>
                             </div>
-                            <div class="header__top__right__language">
+                            <!-- <div class="header__top__right__language">
                                 <image src="{{URL::to('/frontend/image/language.png')}}" alt="">
                                 <div>English</div>
                                 <span class="arrow_carrot-down"></span>
@@ -55,7 +55,7 @@
                                     <li><a href="#">Spanis</a></li>
                                     <li><a href="#">English</a></li>
                                 </ul>
-                            </div>
+                            </div> -->
                             <div class="header__top__right__auth">
                                 {{-- kiểm tra id khách hàng nếu chưa bắt đăng nhập --}}
                                 <?php
@@ -64,7 +64,7 @@
                                     if ($customer_id != NULL) {
 
                                         ?>
-                                        <a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-user"></i>Đăng Xuất</a>
+                                        <a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-user"></i>Đăng Xuất'.$customer_id'.</a>
                                         <?php
                                     }else{
                                         ?>
@@ -213,8 +213,8 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+84 0943809337</h5>
-                                <span>hỗ trợ 24/7</span>
+                                <h5>+84 0827249248</h5>
+                                <span>Hỗ trợ 24/7</span>
                             </div>
                         </div>
                     </div>
@@ -224,7 +224,7 @@
                             <h2></h2>
                             <p></p>
                             <br><br><br><br>
-                            <a href="{{URL::to('/trang-chu')}}" class="primary-btn">SHOP NOW</a>
+                            <a href="{{URL::to('/trang-chu')}}" class="primary-btn">MUA NGAY</a>
                         </div>
                     </div>
                 </div>
@@ -400,8 +400,8 @@
                             <a href="{{URL::to('/trang-chu')}}"><image width="120"  src="{{URL::to('/frontend/image/logo.png')}}" alt=""></a>
                         </div>
                         <ul>
-                            <li>Phone: +84 0943809337</li>
-                            <li>Email: buiminhty2004@gmail.com</li>
+                            <li>Phone: +84 827249248</li>
+                            <li>Email: htfresh@gmail.com</li>
                         </ul>
                     </div>
                 </div>
