@@ -64,7 +64,7 @@
                                     if ($customer_id != NULL) {
 
                                         ?>
-                                        <a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-user"></i>Đăng Xuất'.$customer_id'.</a>
+                                        <a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-user"></i>Đăng Xuất</a>
                                         <?php
                                     }else{
                                         ?>
