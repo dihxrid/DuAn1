@@ -121,7 +121,7 @@ class Product extends Controller
     }
     public function delete_product($product_id){
         $this->AuthenLogin();
-        DB::table('tbl_product')->where('product_id',$product_id)->delete();
+        DB::table('tbl_product')->where('product_id',$product_id)->delete();    
         Session::put('message','Xoá sản phẩm thành công');
         return Redirect::to('all-product');
     }

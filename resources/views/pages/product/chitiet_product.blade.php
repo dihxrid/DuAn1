@@ -12,12 +12,12 @@
                                 src="{{URL::to('public/upload/product/'.$value->product_image)}}" alt="">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
-                            <img data-imgbigurl="{{URL::to('/frontend/image/product/details/product-details-2.jpg')}}"
-                                src="{{URL::to('/frontend/image/product/details/thumb-1.jpg')}}" alt="">
-                            <img data-imgbigurl="{{('/frontend/image/product/details/product-details-3.jpg')}}"
-                                src="{{URL::to('/frontend/image/product/details/thumb-2.jpg')}}" alt="">
-                            <img data-imgbigurl="{{URL::to('/frontend/image/product/details/product-details-5.jpg')}}"
-                                src="{{URL::to('/frontend/image/product/details/thumb-3.jpg')}}" alt="">
+                            <img data-imgbigurl="{{URL::to('public/upload/product/'.$value->product_image)}}"
+                            src="{{URL::to('public/upload/product/'.$value->product_image)}}" alt="">
+                            <img data-imgbigurl="{{URL::to('public/upload/product/'.$value->product_image)}}"
+                            src="{{URL::to('public/upload/product/'.$value->product_image)}}" alt="">
+                            <img data-imgbigurl="{{URL::to('public/upload/product/'.$value->product_image)}}"
+                               src="{{URL::to('public/upload/product/'.$value->product_image)}}" alt="">
                         </div>
                     </div>
                 </div>

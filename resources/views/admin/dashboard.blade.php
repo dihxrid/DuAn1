@@ -1,7 +1,7 @@
  @extends('admin_layout')
  @section('admin_content')
 
-{{--  <div class="container-fluid">
+ {{-- <div class="container-fluid">
     <div class="row-fluid">
       <div class="span6">
         <div class="widget-box">
@@ -88,7 +88,7 @@
                 </div>
               </li>
               <li> <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 3% Online Users <span class="pull-right strong">8</span>
-                <div class="progress progress-danger progress-striped ">
+                <div class="progress progress-success progress-striped ">
                   <div style="width: 3%;" class="bar"></div>
                 </div>
               </li>
@@ -156,4 +156,4 @@
     </div>
   </div>
  --}}
-  @endsection
+ @endsection
