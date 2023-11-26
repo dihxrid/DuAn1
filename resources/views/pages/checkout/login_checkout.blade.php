@@ -24,7 +24,7 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="{{asset('/frontend/login-checkout/images/signin-image.jpg')}}" alt="sing up image"></figure>
-                        <a href="{{URL::to('/register-checkout')}}" class="signup-image-link">Create an account</a>
+                        <a href="{{URL::to('/register-checkout')}}" class="signup-image-link">Tạo tài khoản</a>
                         <a href="{{URL::to('/trang-chu')}}" class="signup-image-link">Trở Về Trang Chủ</a>
                     </div>
 
@@ -48,14 +48,14 @@
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
                             </div>
                         </form>
-                        <div class="social-login">
+                        <!-- <div class="social-login">
                             <span class="social-label">Or login with</span>
                             <ul class="socials">
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

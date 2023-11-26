@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-12">
                      <div class="section-title related__product__title">
-                        <h2>Hãy giữ máy chúng tôi sẽ liện hệ với bạn khi hàng tới</h2>
+                        <h2>Hãy giữ máy chúng tôi sẽ liên hệ với bạn khi hàng tới</h2>
                      </div>
                 </div>
             </div>

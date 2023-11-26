@@ -37,6 +37,10 @@
                                 <input type="password" name="customer_password" id="pass" placeholder="Password"/>
                             </div>
                             <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="re-password" name="customer_password" id="pass" placeholder="Re Password"/>
+                            </div>
+                            <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-phone"></i></label>
                                 <input type="number" name="customer_phone" id="phone" placeholder="Your Phone"/>
                             </div>

@@ -95,7 +95,7 @@ class CheckoutController extends Controller
         //insert payment_method
         $data = array();
         $data['payment_method'] = $request->payment_option;
-        $data['payment_status'] = 'Đang chờ xử lý';
+        $data['payment_status'] = 'Đang đóng gói';
         $payment_id =DB::table('tbl_payment')->insertGetId($data);
 
         //insert order
@@ -104,7 +104,7 @@ class CheckoutController extends Controller
         $order_data['shipping_id'] = Session::get('shipping_id');
         $order_data['payment_id'] = $payment_id;
         $order_data['order_total'] = Cart::total();
-        $order_data['order_status'] = 'Đang chờ xử lý';
+        $order_data['order_status'] = 'Đang đóng gói';
         $order_id =DB::table('tbl_order')->insertGetId($order_data);
 
         //insert order_details
