@@ -16,14 +16,14 @@
                         <div class="featured__item__pic set-bg" data-setbg="{{URL::to('public/upload/product/'.$product->product_image)}}">
                             <ul class="featured__item__pic__hover">
                                 <!-- <li><a href="#"><i class="fa fa-heart"></i></a></li> -->
-                                <li><a href="{{URL::to('chi-tiet-san-pham/'.$product->product_id)}}"><i class="fa fa-info"></i></a></li>
+                                <!-- <li><a href="{{URL::to('chi-tiet-san-pham/'.$product->product_id)}}"><i class="fa fa-info"></i></a></li> -->
                                  <?php
                                     //use Illuminate\Support\Facades\Session;
                                     $customer_id = Session::get('customer_id');
                                     if ($customer_id != NULL) {
 
                                         ?>
-                                        <li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <li><a href="{{URL::to('chi-tiet-san-pham/'.$product->product_id)}}"><i class="fa fa-shopping-cart"></i></a></li>
                                         <?php
                                     }else{
                                         ?>
