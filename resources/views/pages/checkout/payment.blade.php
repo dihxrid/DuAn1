@@ -72,7 +72,7 @@
                                     <form action="{{URL::to('/order-place')}}" method="POST">
                                         {{csrf_field()}}
                                             <label for="payment">
-                                                Thanh toán bằng ATM
+                                                Thanh toán bằng VNPAY
                                                 <input type="checkbox" id="payment" name="payment_option" value="1">
                                                 
                                                 <img src="{{asset('/frontend/image/payment2.png')}}" width="30px" height="30px">

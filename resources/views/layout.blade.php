@@ -206,7 +206,7 @@
                             <form action="{{URL::to('/tim-kiem')}}" method="POST">
                                 {{csrf_field()}}
                                 <input type="text" placeholder="Nhập Thứ Bạn Cần Tìm?" name="keywords_submit">
-                                <button name="seach_items" type="submit" class="site-btn">Tìm</button>
+                                <button name="seach_items" type="submit" class="primary-btn">Tìm</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -433,7 +433,7 @@
                         <p>Để Lại Địa Chỉ E-mail của bạn để nhận thông báo về sản phẩm mới nhất</p>
                         <form action="#">
                             <input type="text" placeholder="Nhập E-mail của bạn">
-                            <button type="submit" class="site-btn">Đăng Ký</button>
+                            <button type="submit" class="primary-btn">Đăng Ký</button>
                         </form>
                         <div class="footer__widget__social">
                             <a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a>
