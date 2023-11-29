@@ -92,6 +92,8 @@ Route::post('/login-customer','App\Http\Controllers\CheckoutController@login_cus
 //payment
 Route::get('/payment','App\Http\Controllers\CheckoutController@payment');
 Route::post('/order-place','App\Http\Controllers\CheckoutController@order_place');
+Route::post('/payment-online','App\Http\Controllers\CheckoutController@create_payment');
+Route::get('/vnpay-return','App\Http\Controllers\CheckoutController@vnpay_return') ->name('vnpay.return');
 
 
 //order
