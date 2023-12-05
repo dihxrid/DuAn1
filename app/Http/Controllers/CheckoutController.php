@@ -123,7 +123,10 @@ class CheckoutController extends Controller
         $order_data['customer_id'] = Session::get('customer_id');
         $order_data['shipping_id'] = Session::get('shipping_id');
         $order_data['payment_id'] = $payment_id;
+        Cart::setGlobalTax(0);
+        // $order_data['order_total'] = (floatval(Cart::total())-floatval(Cart::tax()))*1000;
         $order_data['order_total'] = Cart::total();
+           
         $order_data['order_status'] = 'Đang đóng gói';
         $order_id = DB::table('tbl_order')->insertGetId($order_data);
 
@@ -207,7 +210,7 @@ class CheckoutController extends Controller
 
         $vnp_Url = $vnp_Url . "?" . $query;
         if (isset($vnp_HashSecret)) {
-            $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret); //  
+            $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret); 
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
 
@@ -229,6 +232,7 @@ class CheckoutController extends Controller
         $order_data['customer_id'] = Session::get('customer_id');
         $order_data['shipping_id'] = Session::get('shipping_id');
         $order_data['payment_id'] = $payment_id;
+        Cart::setGlobalTax(0);
         $order_data['order_total'] = Cart::total();
         $order_data['order_status'] = 'Đang đóng gói';
         $order_id = DB::table('tbl_order')->insertGetId($order_data);
