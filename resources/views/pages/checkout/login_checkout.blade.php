@@ -30,6 +30,7 @@
 
                     <div class="signin-form">
                         <h2 class="form-title">Login</h2>
+                        
                         <form  action="{{URl::to('/login-customer')}}" method="POST" class="register-form" id="login-form">
                             {{csrf_field()}}
                             <div class="form-group">

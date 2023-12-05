@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
+use Dotenv\Validator;
 use Illuminate\support\Facades\Session;
 use Illuminate\support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Auth\Events\Validated;   
 use TblOrderDetails;
 
 class CheckoutController extends Controller
@@ -32,7 +34,18 @@ class CheckoutController extends Controller
     }
     public function add_customer(Request $request)
     {
+        $request->validate([
+            'customer_name'=>'required',
+            'customer_email'=>'required',
+            'customer_password'=>'required',
+            'customer_phone'=>'required',
+        ],
+        [
+            'customer_name.required'=>'Tên người dùng không thể bỏ trống',
+            'customer_password.required'=>'Mật khẩu không thể bỏ trống',
+            'customer_phone.required'=>'Số điện thoại không hợp lệ',
 
+        ]);
         $data = array();
         $data['customer_name'] = $request->customer_name;
         $data['customer_email'] = $request->customer_email;
@@ -74,16 +87,20 @@ class CheckoutController extends Controller
     }
     public function login_customer(Request $request)
     {
+       /* $request->validate([
+            'customer_name' =>'$result',
+            'customer_password' => '$result',
+        ]);*/
         $name = $request->account_name;
         $password = md5($request->account_password);
         $result = DB::table('tbl_customer')->where('customer_name', $name)->where('customer_password', $password)->first();
-
         if ($result) {
             Session::put('customer_id', $result->customer_id);
             return Redirect::to('/checkout');
         } else {
-            return Redirect::to('/login-checkout');
+            return Redirect::to('/login-checkout');  /*->withError('login fails')*/ 
         }
+       
     }
 
     public function payment()
