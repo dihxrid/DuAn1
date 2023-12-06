@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 //Frontend
 Route::get('/','App\Http\Controllers\HomeController@index');
+Route::get('/test-mail','App\Http\Controllers\HomeController@testMail');
 Route::get('/trang-chu','App\Http\Controllers\HomeController@index');
 Route::post('/tim-kiem','App\Http\Controllers\HomeController@tim_kiem');
+
+
+
+
 
 //danh muc sản phẩm
 Route::get('/danh-muc-san-pham/{category_id}','App\Http\Controllers\CategoryProduct@show_category_home');
@@ -100,6 +106,8 @@ Route::get('/vnpay-return','App\Http\Controllers\CheckoutController@vnpay_return
 Route::get('/manage-order','App\Http\Controllers\CheckoutController@manage_order');
 Route::get('/view-order/{orderId}','App\Http\Controllers\CheckoutController@view_order');
 Route::get('/delete-order/{orderId}','App\Http\Controllers\CheckoutController@delete_order');
+Route::get('/accept-order','App\Http\Controllers\CheckoutController@accept_order')->name('accept.order');
+
 
 
 
