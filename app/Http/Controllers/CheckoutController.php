@@ -8,7 +8,10 @@ use App\Http\Requests;
 use Illuminate\support\Facades\Session;
 use Illuminate\support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Mail;
 use TblOrderDetails;
+use App\Models\Customer;
+
 
 class CheckoutController extends Controller
 {
@@ -109,7 +112,7 @@ class CheckoutController extends Controller
         Cart::setGlobalTax(0);
         // $order_data['order_total'] = (floatval(Cart::total())-floatval(Cart::tax()))*1000;
         $order_data['order_total'] = Cart::total();
-           
+
         $order_data['order_status'] = 'Đang đóng gói';
         $order_id = DB::table('tbl_order')->insertGetId($order_data);
 
@@ -131,12 +134,31 @@ class CheckoutController extends Controller
             return view('pages.vnpay.index', compact('totalMoney'));
         } else {
 
-            Cart::destroy();
+            //gửi mail
+            $customer=Customer::find(Session::get('customer_id'));
+            $data['email'][]= $customer->customer_email;
+            $data['name'][]= $customer->customer_name;
+           
+            Mail::send('pages.mail.mail_order', compact('order_data'), function($email) use($data){
+                $email->subject('HT Fresh Fruit - Xác Nhận Đơn Hàng');
+                $email ->to($data['email'],  $data['name']);
+                });
+
 
             $cate_product  = DB::table('tbl_category_product')->where('category_status', '1')->orderby('category_id', 'desc')->get();
             $brand_product = DB::table('tbl_brand_product')->where('brand_status', '1')->orderby('brand_id', 'desc')->get();
-            return view('pages.checkout.handcash')->with('category', $cate_product)->with('brand', $brand_product);
+            return view('pages.checkout.order_success')->with('category', $cate_product)->with('brand', $brand_product);
         }
+    }
+
+    public function accept_order() {
+        
+        Cart::destroy();
+
+        $cate_product  = DB::table('tbl_category_product')->where('category_status', '1')->orderby('category_id', 'desc')->get();
+        $brand_product = DB::table('tbl_brand_product')->where('brand_status', '1')->orderby('brand_id', 'desc')->get();
+        return view('pages.checkout.handcash')->with('category', $cate_product)->with('brand', $brand_product);
+        
     }
 
     public function create_payment(Request $request)
@@ -146,14 +168,14 @@ class CheckoutController extends Controller
         $vnp_TmnCode = "07IVEG4B"; //Mã website tại VNPAY 
         $vnp_HashSecret = "VSBPLHTGBLAFZVTJYDYYLEGXDMYWRUCU"; //Chuỗi bí mật
 
-        $vnp_TxnRef = rand(1,100000); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
-        $vnp_OrderInfo = $request ->order_desc;
-        $vnp_OrderType =  $request ->order_type;
+        $vnp_TxnRef = rand(1, 100000); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        $vnp_OrderInfo = $request->order_desc;
+        $vnp_OrderType =  $request->order_type;
         $vnp_Amount = str_replace(',', '', Cart::subtotal(0)) * 100;
-        $vnp_Locale = $request ->language;
-        $vnp_BankCode = $request ->bank_code;
-        $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];  
-        
+        $vnp_Locale = $request->language;
+        $vnp_BankCode = $request->bank_code;
+        $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
+
         $inputData = array(
             "vnp_Version" => "2.1.0",
             "vnp_TmnCode" => $vnp_TmnCode,
@@ -193,18 +215,18 @@ class CheckoutController extends Controller
 
         $vnp_Url = $vnp_Url . "?" . $query;
         if (isset($vnp_HashSecret)) {
-            $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret); 
+            $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
 
 
         return redirect($vnp_Url);
-    
     }
 
 
-    public function vnpay_return(Request $request) {
-        
+    public function vnpay_return(Request $request)
+    {
+
         $data = array();
         $data['payment_method'] = 1;
         $data['payment_status'] = 'Đang đóng gói';
@@ -230,13 +252,22 @@ class CheckoutController extends Controller
             $order_details_data['product_sales_quantity'] = $v_content->qty;
             DB::table('tbl_order_details')->insert($order_details_data);
         }
-        Cart::destroy();
+
+        //gửi mail
+        $customer=Customer::find(Session::get('customer_id'));
+        $data['email'][]= $customer->customer_email;
+        $data['name'][]= $customer->customer_name;
+       
+        Mail::send('pages.mail.mail_order', compact('order_data'), function($email) use($data){
+            $email->subject('HT Fresh Fruit - Xác Nhận Đơn Hàng');
+            $email ->to($data['email'],  $data['name']);
+            });
+
+
         $cate_product  = DB::table('tbl_category_product')->where('category_status', '1')->orderby('category_id', 'desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status', '1')->orderby('brand_id', 'desc')->get();
-        return view('pages.checkout.handcash')->with('category', $cate_product)->with('brand', $brand_product);
-
-
-
+        return view('pages.checkout.order_success')->with('category', $cate_product)->with('brand', $brand_product);
+        
     }
 
     public function manage_order()

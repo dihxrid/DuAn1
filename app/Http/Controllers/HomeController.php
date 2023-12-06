@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use Illuminate\support\Facades\Session;
 use Illuminate\support\Facades\Redirect;
+use Illuminate\Support\Facades\Mail;
 session_start();
 
 class HomeController extends Controller
@@ -27,4 +28,12 @@ class HomeController extends Controller
     	return view('pages.product.seach_product')->with('category',$cate_product)->with('brand',$brand_product)->with('seach_product',$seach_product);
 
    }
+   public function testMail(){
+    $name = 'HT Fresh Fruit';
+    Mail::send('pages.mail.mail_order', compact('name'), function($email) use($name){
+    $email ->to('hoangdang3210@gmail.com', $name);
+    });
+   }
 }
+
+
