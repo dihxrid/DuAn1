@@ -47,19 +47,9 @@
                                 <a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
                                 <a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p"></i></a>
                             </div>
-                            <!-- <div class="header__top__right__language">
-                                <image src="{{URL::to('/frontend/image/language.png')}}" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div> -->
                             <div class="header__top__right__auth">
                                 {{-- kiểm tra id khách hàng nếu chưa bắt đăng nhập --}}
                                 <?php
-                                //use Illuminate\Support\Facades\Session;
                                 $customer_id = Session::get('customer_id');
                                 if ($customer_id != NULL) {
 
