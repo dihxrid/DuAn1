@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
             margin: 0 auto;
             background: #fff;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         p {
@@ -47,11 +48,12 @@
             padding: 10px;
         }
 
-        td, th {
+        td,
+        th {
             text-align: left;
             padding: 8px;
             border: 1px solid #ccc;
-  
+
         }
 
         table {
@@ -67,7 +69,8 @@
             align-items: center;
         }
 
-        .shoping__cart__price, .shoping__cart__total {
+        .shoping__cart__price,
+        .shoping__cart__total {
             color: #888;
         }
 
@@ -87,7 +90,7 @@
             margin: 0 5px;
             border: 1px solid #ddd;
         }
-        
+
         .shoping__cart__table {
             margin-top: 20px;
         }
@@ -98,13 +101,11 @@
 
     <div class="container">
         <div style="text-align: center">
-        <p>Đây là email tự động, Vui lòng không trả lời lại mail này</p>
-        <p>Cảm ơn bạn đã đặt hàng tại hệ thống website của chúng tôi, vui lòng kiểm tra lại thông tin và nhấn vào nút xác nhận đơn hàng </p>
-    </p>
-        
-           
-
-            </div>
+            <p>Đây là email tự động, Vui lòng không trả lời lại mail này</p>
+            <p>Cảm ơn bạn đã đặt hàng tại hệ thống website của chúng tôi, 
+            vui lòng kiểm tra lại thông tin và nhấn vào nút xác nhận đơn hàng </p>
+            </p>
+        </div>
 
         <div class="shoping__cart__table">
             {{-- lấy ra những gì đã thêm vào giỏ hàng --}}
@@ -112,7 +113,7 @@
             $content = Cart::content();
             ?>
             {{-- --}}
-            <table >
+            <table>
                 <thead>
                     <tr>
                         <th class="shoping__product">Sản Phẩm</th>
@@ -144,14 +145,27 @@
                             echo number_format($subtotal) . ' ' . 'VNĐ'
                             ?>
                         </td>
+                        
                         @endforeach
+                      
+                            
+                        
                     </tr>
+
                 </tbody>
             </table>
-           
+
+                             <?php
+                            $total=Cart::subtotal(0);
+                            echo '<p>Thành tiền: '.$total . ' ' . 'VNĐ</p>'
+                            ?>
+
+
         </div>
-        <a href="{{route('accept.order')}}" style="background-color: #CCF381;">Xác nhận</a> 
+        <a href="{{route('accept.order')}}" style="background-color: #CCF381;">Xác nhận</a>
     </div>
+ 
 
 </body>
+
 </html>

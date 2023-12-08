@@ -130,7 +130,6 @@ class CheckoutController extends Controller
         if ($data['payment_method'] == 1) {
             $totalMoney = str_replace(',', '', Cart::subtotal(0));
             session(['info customer' => $data]);
-            //dd($totalMoney);
             return view('pages.vnpay.index', compact('totalMoney'));
         } else {
 

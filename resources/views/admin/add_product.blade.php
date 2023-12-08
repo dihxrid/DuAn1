@@ -34,7 +34,7 @@
         <div class="widget-content nopadding">
           <form action="{{URL::to('/save-product')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
             {{csrf_field()}}
-            <div class="control-group">
+            <div class="control-group"> 
               <label class="control-label">Tên Sản Phẩm :</label>
               <div class="controls">
                 <input type="text" name="product_name" class="span11" placeholder="Nhập Tên Sản Phẩm" />
@@ -52,7 +52,7 @@
             <div class="control-group">
               <label class="control-label">Hình Ảnh Sản Phẩm :</label>
               <div class="controls">
-                <input type="file" name="product_image" />
+                <input type="file" name="product_image" multiple />
               </div>
             </div>
             <div class="control-group">

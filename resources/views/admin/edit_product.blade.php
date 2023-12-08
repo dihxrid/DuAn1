@@ -40,7 +40,7 @@
             <div class="control-group">
               <label class="control-label">Hình Ảnh Sản Phẩm :</label>
               <div class="controls">
-                <input type="file" name="product_image" required="" />
+                <input type="file" name="product_image" required="" multiple/>
                 <img src="{{URL::to('public/upload/product/'.$pro->product_image)}}" width="100" height="100">
               </div>
             </div>
