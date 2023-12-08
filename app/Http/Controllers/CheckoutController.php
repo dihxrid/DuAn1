@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\In4Customer;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\PaymentRequests;
+use App\Http\Requests\ShippingRequests;
 use Illuminate\support\Facades\Session;
 use Illuminate\support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Mail;
 use TblOrderDetails;
 use App\Models\Customer;
-
+session_start();
 
 class CheckoutController extends Controller
 {
@@ -33,13 +37,13 @@ class CheckoutController extends Controller
         } else
             return Redirect::to('admin')->send();
     }
-    public function add_customer(Request $request)
+    public function add_customer(In4Customer $request)
     {
-
         $data = array();
         $data['customer_name'] = $request->customer_name;
         $data['customer_email'] = $request->customer_email;
         $data['customer_password'] = md5($request->customer_password);
+        $data['customer_password_comfirmation'] =md5($request->customer_password);
         $data['customer_phone'] = $request->customer_phone;
 
 
@@ -55,7 +59,7 @@ class CheckoutController extends Controller
         return view('pages.checkout.checkout')->with('category', $cate_product)->with('brand', $brand_product);
     }
 
-    public function save_checkout(Request $request)
+    public function save_checkout( ShippingRequests $request)
     {
         $data = array();
         $data['shipping_name'] = $request->shipping_name;
@@ -80,7 +84,6 @@ class CheckoutController extends Controller
         $name = $request->account_name;
         $password = md5($request->account_password);
         $result = DB::table('tbl_customer')->where('customer_name', $name)->where('customer_password', $password)->first();
-
         if ($result) {
             Session::put('customer_id', $result->customer_id);
             return Redirect::to('/checkout');
@@ -98,7 +101,7 @@ class CheckoutController extends Controller
 
     public function order_place(Request $request)
     {
-        //insert payment_method
+       
         $data = array();
         $data['payment_method'] = $request->payment_option;
         $data['payment_status'] = 'Đang đóng gói';
