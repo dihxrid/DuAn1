@@ -42,12 +42,26 @@ class CheckoutController extends Controller
         $data['customer_password'] = md5($request->customer_password);
         $data['customer_phone'] = $request->customer_phone;
 
-
+        Mail::send('pages.mail.mail_regis', compact('data'), function($email) use($data){
+            $email->subject('HT Fresh Fruit - Xác Nhận Tài Khoản');
+            $email ->to($data['customer_email'],  $data['customer_name']);
+            });
+            //lưu vào session
+            Session::put('mail_regis_data', $data);
+            return view('pages.checkout.mail_regis');
+    }
+       
+    
+    public function mail_regis(Request $request){
+        $data = $request->session()->get('mail_regis_data', []);
         $customer_id = DB::table('tbl_customer')->insertGetId($data);
         Session::put('customer_id', $customer_id);
         Session::put('customer_name', $request->customer_name);
-        return Redirect::to('/checkout');
+        return Redirect::to('trang-chu') ;
+    
+
     }
+
     public function checkout()
     {
         $cate_product  = DB::table('tbl_category_product')->where('category_status', '1')->orderby('category_id', 'desc')->get();

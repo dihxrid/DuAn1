@@ -11,14 +11,14 @@
                             <img class="product__details__pic__item--large"
                                 src="{{URL::to('public/upload/product/'.$value->product_image)}}" alt="">
                         </div>
-                        <div class="product__details__pic__slider owl-carousel">
+                        <!-- <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="{{URL::to('public/upload/product/'.$value->product_image)}}"
                             src="{{URL::to('public/upload/product/'.$value->product_image)}}" alt="">
                             <img data-imgbigurl="{{URL::to('public/upload/product/'.$value->product_image)}}"
                             src="{{URL::to('public/upload/product/'.$value->product_image)}}" alt="">
                             <img data-imgbigurl="{{URL::to('public/upload/product/'.$value->product_image)}}"
                                src="{{URL::to('public/upload/product/'.$value->product_image)}}" alt="">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
