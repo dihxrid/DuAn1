@@ -30,7 +30,7 @@ class HomeController extends Controller
    }
    public function testMail(){
     $name = 'HT Fresh Fruit';
-    Mail::send('pages.mail.mail_order', compact('name'), function($email) use($name){
+    Mail::send('pages.mail.mail_regis', compact('name'), function($email) use($name){
     $email ->to('hoangdang3210@gmail.com', $name);
     });
    }

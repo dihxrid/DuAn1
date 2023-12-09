@@ -85,13 +85,14 @@ Route::post('/update-cart','App\Http\Controllers\CartController@update_cart');
 Route::get('/show-cart','App\Http\Controllers\CartController@show_cart');
 Route::get('/delete-cart/{rowId}','App\Http\Controllers\CartController@delete_cart');
 
-//checkpout
+//checkout
 Route::get('/login-checkout','App\Http\Controllers\CheckoutController@login_checkout');
 Route::get('/register-checkout','App\Http\Controllers\CheckoutController@register_checkout');
 Route::get('/logout-checkout','App\Http\Controllers\CheckoutController@logout_checkout');
 Route::get('/checkout','App\Http\Controllers\CheckoutController@checkout');
 Route::post('/save-checkout','App\Http\Controllers\CheckoutController@save_checkout');
 Route::post('/add-customer','App\Http\Controllers\CheckoutController@add_customer');
+Route::get('/mail-regis','App\Http\Controllers\CheckoutController@mail_regis')->name('mail.regis');
 Route::post('/login-customer','App\Http\Controllers\CheckoutController@login_customer');
 
 
