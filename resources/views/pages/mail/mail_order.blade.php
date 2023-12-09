@@ -98,7 +98,6 @@
 
     <div class="container">
         <div style="text-align: center">
-<<<<<<< Updated upstream
         <p>Đây là email tự động, Vui lòng không trả lời lại mail này</p>
         <p>Cảm ơn bạn đã đặt hàng tại hệ thống website của chúng tôi, vui lòng kiểm tra lại thông tin và nhấn vào nút xác nhận đơn hàng </p>
     </p>
@@ -106,13 +105,6 @@
            
 
             </div>
-=======
-            <p>Đây là email tự động, Vui lòng không trả lời lại mail này</p>
-            <p>Cảm ơn bạn đã đặt hàng tại hệ thống website của chúng tôi,
-                vui lòng kiểm tra lại thông tin và nhấn vào nút xác nhận đơn hàng </p>
-            </p>
-        </div>
->>>>>>> Stashed changes
 
         <div class="shoping__cart__table">
             {{-- lấy ra những gì đã thêm vào giỏ hàng --}}
@@ -152,36 +144,14 @@
                             echo number_format($subtotal) . ' ' . 'VNĐ'
                             ?>
                         </td>
-<<<<<<< Updated upstream
                         @endforeach
-=======
-
-                        @endforeach
-
-
-
->>>>>>> Stashed changes
                     </tr>
                 </tbody>
             </table>
-<<<<<<< Updated upstream
            
-=======
-
-            <?php
-            $total = Cart::subtotal(0);
-            echo '<p>Thành tiền: ' . $total . ' ' . 'VNĐ</p>'
-            ?>
-
-
->>>>>>> Stashed changes
         </div>
         <a href="{{route('accept.order')}}" style="background-color: #CCF381;">Xác nhận</a> 
     </div>
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
 </body>
 </html>
