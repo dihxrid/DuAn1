@@ -6,13 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\In4Customer;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\PaymentRequests;
-use App\Http\Requests\ShippingRequests;
 use Illuminate\support\Facades\Session;
 use Illuminate\support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Support\Facades\Mail;
 use TblOrderDetails;
 use App\Models\Customer;
 session_start();
@@ -39,6 +35,7 @@ class CheckoutController extends Controller
     }
     public function add_customer(In4Customer $request)
     {
+
         $data = array();
         $data['customer_name'] = $request->customer_name;
         $data['customer_email'] = $request->customer_email;
@@ -81,6 +78,10 @@ class CheckoutController extends Controller
     }
     public function login_customer(Request $request)
     {
+       /* $request->validate([
+            'customer_name' =>'$result',
+            'customer_password' => '$result',
+        ]);*/
         $name = $request->account_name;
         $password = md5($request->account_password);
         $result = DB::table('tbl_customer')->where('customer_name', $name)->where('customer_password', $password)->first();
@@ -88,8 +89,9 @@ class CheckoutController extends Controller
             Session::put('customer_id', $result->customer_id);
             return Redirect::to('/checkout');
         } else {
-            return Redirect::to('/login-checkout');
+            return Redirect::to('/login-checkout');  /*->withError('login fails')*/ 
         }
+       
     }
 
     public function payment()

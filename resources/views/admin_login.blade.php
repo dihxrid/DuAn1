@@ -58,11 +58,11 @@
             <br>
             <?php
                    // use Illuminate\Support\Facades\Session;
-                    $message = Session::get('message');
-                    if ($message) {
-                       echo '<span class="error_text" >'.$message.'</span>';
-                       Session::put('message',null);
-                    }
+                    // $message = Session::get('message');
+                    // if ($message) {
+                    //    echo '<span class="error_text" >'.$message.'</span>';
+                    //    Session::put('message',null);
+                    // }
             ?>
           </div>
         </form>

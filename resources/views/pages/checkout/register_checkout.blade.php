@@ -24,6 +24,13 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Register</h2>
+                        @if($errors)
+                            @foreach($errors->all() as $errors)
+                            <li style="color:red">
+                                {{$errors}}
+                            </li>
+                            @endforeach
+                        @endif
                         <form action="{{URL::to('/add-customer')}}" method="POST">
                             {{csrf_field()}}
                             @if(count($errors))
@@ -39,7 +46,7 @@
                             @endif
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="customer_name" id="name" placeholder="Your Name" />
+                                <input type="text" name="customer_name" id="name" placeholder="Your Name"/>
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
