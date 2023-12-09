@@ -33,17 +33,7 @@
                         @endif
                         <form action="{{URL::to('/add-customer')}}" method="POST">
                             {{csrf_field()}}
-                            @if(count($errors))
-                            <div class="form-group">
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach($errors->all() as $error)
-                                        <li>{{$error}}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                            @endif
+                          
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="customer_name" id="name" placeholder="Your Name"/>

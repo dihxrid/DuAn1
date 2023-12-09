@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\In4Customer;
+use App\Http\Requests\InfoCustomer;
+use App\Http\Requests\ShippingRequests;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\support\Facades\Session;
 use Illuminate\support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -33,7 +35,7 @@ class CheckoutController extends Controller
         } else
             return Redirect::to('admin')->send();
     }
-    public function add_customer(In4Customer $request)
+    public function add_customer(InfoCustomer $request)
     {
 
         $data = array();

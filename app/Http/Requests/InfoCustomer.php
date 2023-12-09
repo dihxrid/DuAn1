@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class In4Customer extends FormRequest
+class InfoCustomer extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,7 @@ class In4Customer extends FormRequest
             'customer_name' => 'required',
             'customer_password' => 'required_with:customer_password_comfirmation|same:customer_password_comfirmation|min:6',
             'customer_password_comfirmation' => 'min:6',
-            'customer_email' => 'required|unique|email',
+            'customer_email' => 'required|email',
             'customer_phone' => 'required',
         ];
     }
