@@ -30,8 +30,14 @@
 
                     <div class="signin-form">
                         <h2 class="form-title">Login</h2>
+                        
                         <form  action="{{URl::to('/login-customer')}}" method="POST" class="register-form" id="login-form">
                             {{csrf_field()}}
+                            <!-- @if(count($errors))
+                                        @foreach($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                        @endforeach
+                            @endif -->
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="account_name" id="your_name" placeholder="Your Name"/>
@@ -66,6 +72,22 @@
        {{-- Login checkout --}}
     <script src="{{asset('/frontend/login-checkout/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('/frontend/login-checkout/js/main.js')}}"></script>
+    
+
     {{-- End Login checkout --}}
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+<script>
+    document.getElementById('login-form').addEventListener('submit', function (event) {
+        // Get the values of the input fields
+        var username = document.getElementById('your_name').value.trim();
+        var password = document.getElementById('your_pass').value.trim();
+
+        // Perform validation
+        if (username === '' || password === '') {
+            event.preventDefault(); // Prevent form submission if validation fails
+            alert('Không để trống tên đăng nhập và mật khẩu .');
+        }
+    });
+</script>
+
 </html>

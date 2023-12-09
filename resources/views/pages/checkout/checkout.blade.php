@@ -74,6 +74,17 @@
         </div>
         <form action="{{URL::to('/save-checkout')}}" method="POST">
             {{csrf_field()}}
+            @if(count($errors))
+                            <div class="form-group">
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                            @endif
             <div class="row">
                 <div class="col-lg-8 col-md-6">
                     <div class="row">

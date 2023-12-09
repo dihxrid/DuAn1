@@ -71,6 +71,7 @@
                                 <div class="checkout__input__checkbox">
                                     <form action="{{URL::to('/order-place')}}" method="POST">
                                         {{csrf_field()}}
+                            
                                             <label for="payment">
                                                 Thanh toán bằng VNPAY
                                                 <input type="checkbox" id="payment" name="payment_option" value="1">
@@ -95,9 +96,10 @@
                                     </div>
                                 </div>
                         </div>
-                </div>
-            </div>
+                </div>           
+            </div>  
         </div>
     </section>
+
     <!-- Checkout Section End -->
 @endsection
