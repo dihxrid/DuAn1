@@ -209,7 +209,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="hero__item set-bg" data-setbg="{{URL::to('/frontend/image/hero/banner.jpg')}}">
+                    @foreach($slider as $key =>$slide)
+                    <div class="hero__item set-bg" data-setbg="{{URL::to('/upload/slider/banner.jpg')}}">
                         <div class="hero__text">
                             <span></span>
                             <h2></h2>
@@ -218,6 +219,7 @@
                             <a href="{{URL::to('/trang-chu')}}" class="primary-btn">MUA NGAY</a>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>

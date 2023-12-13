@@ -75,6 +75,12 @@
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard2</a>
   <ul>
     <li ><a href="{{URL::to('/dashboard')}}"><i class="icon icon-home"></i> <span>Tổng Quan</span></a> </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Slider</span> <span class="label label-important">2</span></a>
+      <ul>
+        <li><a href="{{URl::to('/add-slider')}}">Thêm Slide</a></li>
+        <li><a href="{{URL::to('/manage-slider')}}">Quản lý Slide</a></li>
+      </ul>
+    </li>
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Danh Mục Sản Phẩm</span> <span class="label label-important">2</span></a>
       <ul>
         <li><a href="{{URl::to('/add-category-product')}}">Thêm Danh Mục Sản Phẩm</a></li>
