@@ -8,16 +8,19 @@ use App\Http\Requests;
 use Illuminate\support\Facades\Session;
 use Illuminate\support\Facades\Redirect;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Slider;
 session_start();
 
 class HomeController extends Controller
 {
+    //slide
     public function index(){ 
+        $slider = Slider::orderBy('slider_id','DESC')->take(4)->get();
     	$cate_product  = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status','1')->orderby('brand_id','desc')->get();
         $all_product   = DB::table('tbl_product')->where('product_status','1')->orderby('product_id','desc')->get();
    
-    	return view('pages.home')->with('category',$cate_product)->with('brand',$brand_product)->with('all_product',$all_product);
+    	return view('pages.home')->with('category',$cate_product)->with('brand',$brand_product)->with('all_product',$all_product)->with('slider',$slider);
     }
    public function tim_kiem(Request $request){
    	$keywords = $request->keywords_submit;

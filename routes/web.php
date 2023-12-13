@@ -109,6 +109,18 @@ Route::get('/view-order/{orderId}','App\Http\Controllers\CheckoutController@view
 Route::get('/delete-order/{orderId}','App\Http\Controllers\CheckoutController@delete_order');
 Route::get('/accept-order','App\Http\Controllers\CheckoutController@accept_order')->name('accept.order');
 
+//Banner
+Route::get('/manage-slider','App\Http\Controllers\SliderController@manage_slider');
+Route::get('/add-slider','App\Http\Controllers\SliderController@add_slider');
 
+Route::get('/edit-slide/{slider_id}','App\Http\Controllers\SliderController@edit_slide');
+Route::get('/delete-slide/{slider_id}','App\Http\Controllers\SliderController@delete_slide');
+
+Route::get('/unactive-slide/{slider_id}','App\Http\Controllers\SliderController@unactive_slide');
+Route::get('/active-slide/{slider_id}','App\Http\Controllers\SliderController@active_slide');
+Route::post('/save-slide','App\Http\Controllers\SliderController@save_slide');
+
+Route::post('/update-slide/{slider_id}','App\Http\Controllers\SliderController@update_slide');
+Route::post('/insert-slider','App\Http\Controllers\SliderController@insert_slider');
 
 
