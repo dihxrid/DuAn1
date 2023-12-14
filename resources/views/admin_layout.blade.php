@@ -116,6 +116,7 @@
       <li class="bg_lg"> <a href="{{URl::to('/all-brand-product')}}"> <i class="icon icon-inbox"></i> Thương Hiệu Sản Phẩm</a> </li>
       <li class="bg_ly"> <a href="{{URl::to('/all-product')}}"> <i class="icon-shopping-cart"></i> Sản Phẩm </a> </li>
       <li class="bg_lo"> <a href="{{URl::to('/manage-order')}}"> <i class="icon icon-signal"></i> Đơn Hàng </a> </li>
+      <li class="bg_lo"> <a href="{{URl::to('/manage-slider')}}"> <i class="icon icon-picture"></i> Slide </a> </li>
     </ul>
   </div>
  @yield('admin_content')
