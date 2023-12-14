@@ -34,14 +34,14 @@ class SliderController extends Controller
     public function edit_slide($slider_id){
         $this->AuthenLogin();
         $edit_slide = DB::table('tbl_slider')->where('slider_id',$slider_id)->get();
-        $manage_slider = view('admin.edit_slide')->with('edit_slide',$edit_slide);
-        return view('admin_layout')->with('admin.edit_slide',$manage_slider);
+        $manage_slider = view('admin.edit_slider')->with('edit_slide',$edit_slide);
+        return view('admin_layout')->with('admin.edit_slider',$manage_slider);
     }
     public function delete_slide($slider_id){
         $this->AuthenLogin();
         DB::table('tbl_slider')->where('slider_id',$slider_id)->delete();
         Session::put('message','Xoá slide thành công');
-        return Redirect::to('all-slide');
+        return Redirect::to('manage-slider');
     }
     public function manage_slider(){
         $all_slide = Slider::orderBy('slider_id','DESC')->get();
@@ -76,4 +76,40 @@ class SliderController extends Controller
             return Redirect::to('add-slider');     
         }
     }
+
+    public function update_slider(Request $request, $slider_id) {
+    $this->AuthenLogin();
+
+    $data = $request->all();
+    $get_image = request('slider_image');
+
+    // Check if image is present for update
+    if ($get_image) {
+        $get_name_image = $get_image->getClientOriginalName();
+        $name_image = current(explode('.', $get_name_image));
+        $new_image = $name_image.rand(0, 99).'.'.$get_image->getClientOriginalExtension();
+
+        $get_image->move('public/upload/slider', $new_image);
+
+        // Update existing slider with new image
+        Slider::where('slider_id', $slider_id)->update([
+            'slider_name' => $data['slider_name'],
+            'slider_image' => $new_image,
+            'slider_status' => $data['slider_status'],
+            'slider_desc' => $data['slider_desc'],
+        ]);
+    } else {
+        // Update existing slider without changing image
+        Slider::where('slider_id', $slider_id)->update([
+            'slider_name' => $data['slider_name'],
+            'slider_status' => $data['slider_status'],
+            'slider_desc' => $data['slider_desc'],
+        ]);
+    }
+
+    Session::put('message', 'Cập nhật thành công');
+    return Redirect::to('update-slide');
+    
+}
+
 }

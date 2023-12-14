@@ -53,7 +53,7 @@ class AdminController extends Controller
         $this->AuthenLogin();
     	Session::put('admin_name',null);
     	Session::put('admin_id',null);
-    	return Redirect::to('/admin');
+    	return Redirect::to('/admin');  
     }
 
 }

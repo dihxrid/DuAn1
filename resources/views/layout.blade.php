@@ -22,6 +22,24 @@
     <link rel="stylesheet" href="{{asset('/frontend/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('/frontend/css/style.css')}}" type="text/css">
 
+    <style>
+    .slider {
+        width: 1200px;
+        overflow: hidden;
+        margin: 0 auto; /* Canh giữa slider */
+    }
+
+    .slide {
+        width: 1200px;
+        height: 400px;
+        display: none;
+        text-align: center;
+    }
+
+    .active {
+        display: block;
+    }
+</style>
 
 </head>
 
@@ -164,7 +182,7 @@
     <section class="hero">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+                <!-- <div class="col-lg-3">
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
@@ -187,10 +205,10 @@
                         </ul>
                         @endforeach
                     </div>
-                </div>
+                </div> -->
 
 
-                <div class="col-lg-9">
+                <div class="col-lg-12">
                     <div class="hero__search">
                         <div class="hero__search__form">
                             <form action="{{URL::to('/tim-kiem')}}" method="POST">
@@ -209,15 +227,11 @@
                             </div>
                         </div>
                     </div>
-                    @foreach($slider as $key =>$slide)
-                    <div class="hero__item set-bg" data-setbg="{{URL::to('/upload/slider/banner.jpg')}}">
-                        <div class="hero__text">
-                            <span></span>
-                            <h2></h2>
-                            <p></p>
-                            <br><br><br><br>
-                            <a href="{{URL::to('/trang-chu')}}" class="primary-btn">MUA NGAY</a>
-                        </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="slider">
+                    @foreach($slider as $key => $slide)
+                        <div class="slide active"> <img src="{{URL::to('public/upload/slider/'.$slide->slider_image)}}" alt=""></div>
                     </div>
                     @endforeach
                 </div>
@@ -226,167 +240,8 @@
     </section>
     <!-- Hero Section End -->
 
-    <!-- Categories Section Begin -->
-    {{-- <section class="categories">
-        <div class="container">
-            <div class="row">
-                <div class="categories__slider owl-carousel">
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="{{('/frontend/image/categories/cat-1.jpg')}}">
-    <h5><a href="#">Trái Cây Khô</a></h5>
-    </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="categories__item set-bg" data-setbg="{{('/frontend/image/categories/cat-2.jpg')}}">
-            <h5><a href="#">Trái Cây Miền Tây</a></h5>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="categories__item set-bg" data-setbg="{{('/frontend/image/categories/cat-3.jpg')}}">
-            <h5><a href="#">Trái Cây Miền Nam</a></h5>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="categories__item set-bg" data-setbg="{{('/frontend/image/categories/cat-4.jpg')}}">
-            <h5><a href="#">Trái Cây Miền Bắc</a></h5>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="categories__item set-bg" data-setbg="{{('/frontend/image/categories/cat-5.jpg')}}">
-            <h5><a href="#">Trái Cây Văn Phòng</a></h5>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </section> --}}
-    <!-- Categories Section End -->
-    <!-- Featured Section Begin -->
-
     @yield('content')
-    <!-- Banner Begin -->
-    <!-- <div class="banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <a href="#">
-                            <image width="500" height="250" href="#" src="{{URL::to('/frontend/image/banner/banner-1.jpg')}}" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <a href="#">
-                            <image width="500" height="250" src="{{URL::to('/frontend/image/banner/banner-2.jpg')}}" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    
-    <!-- Banner End -->
 
-    <!-- Latest Product Section Begin -->
-    {{-- <section class="latest-product spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="latest-product__text">
-                        <h4>Sản Phẩm Mới Nhất</h4>
-                        <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <image src="{{URL::to('/frontend/image/latest-product/lp-1.jpg')}}" alt="">
-    </div>
-    <div class="latest-product__item__text">
-        <h6>Crab Pool Security</h6>
-        <span>$30.00</span>
-    </div>
-    </a>
-    </div>
-    <div class="latest-prdouct__slider__item">
-        <a href="#" class="latest-product__item">
-            <div class="latest-product__item__pic">
-                <image src="{{URL::to('/frontend/image/latest-product/lp-1.jpg')}}" alt="">
-            </div>
-            <div class="latest-product__item__text">
-                <h6>Crab Pool Security</h6>
-                <span>$30.00</span>
-            </div>
-        </a>
-    </div>
-    </div>
-    </div>
-    </div>
-    <div class="col-lg-4 col-md-6">
-        <div class="latest-product__text">
-            <h4>Sản Phẩm Top</h4>
-            <div class="latest-product__slider owl-carousel">
-                <div class="latest-prdouct__slider__item">
-                    <a href="#" class="latest-product__item">
-                        <div class="latest-product__item__pic">
-                            <image src="{{URL::to('/frontend/image/latest-product/lp-1.jpg')}}" alt="">
-                        </div>
-                        <div class="latest-product__item__text">
-                            <h6>Crab Pool Security</h6>
-                            <span>$30.00</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="latest-prdouct__slider__item">
-                    <a href="#" class="latest-product__item">
-                        <div class="latest-product__item__pic">
-                            <image src="{{URL::to('/frontend/image/latest-product/lp-1.jpg')}}" alt="">
-                        </div>
-                        <div class="latest-product__item__text">
-                            <h6>Crab Pool Security</h6>
-                            <span>$30.00</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6">
-        <div class="latest-product__text">
-            <h4>Đánh Giá Sản Phẩm</h4>
-            <div class="latest-product__slider owl-carousel">
-                <div class="latest-prdouct__slider__item">
-                    <a href="#" class="latest-product__item">
-                        <div class="latest-product__item__pic">
-                            <image src="{{URL::to('/frontend/image/latest-product/lp-1.jpg')}}" alt="">
-                        </div>
-                        <div class="latest-product__item__text">
-                            <h6>Crab Pool Security</h6>
-                            <span>$30.00</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="latest-prdouct__slider__item">
-                    <a href="#" class="latest-product__item">
-                        <div class="latest-product__item__pic">
-                            <image src="{{URL::to('/frontend/image/latest-product/lp-1.jpg')}}" alt="">
-                        </div>
-                        <div class="latest-product__item__text">
-                            <h6>Crab Pool Security</h6>
-                            <span>$30.00</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    </section> --}}
-    <!-- Latest Product Section End -->
-
-    <!-- Blog Section Begin -->
-
-    <!-- Blog Section End -->
     <!-- Footer Section Begin -->
     <footer class="footer spad">
         <div class="container">
@@ -449,7 +304,27 @@
     <script src="{{asset('/frontend/js/mixitup.min.js')}}"></script>
     <script src="{{asset('/frontend/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('/frontend/js/main.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var currentIndex = 0;
+            var slides = $('.slide');
 
+            function showSlide(index) {
+                slides.removeClass('active');
+                slides.eq(index).addClass('active');
+            }
+
+            // Initial display
+            showSlide(currentIndex);
+
+            // Interval for automatic sliding (optional)
+            setInterval(function() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
+            }, 3000); // Change the interval as needed
+        });
+    </script>
 
 
 </body>

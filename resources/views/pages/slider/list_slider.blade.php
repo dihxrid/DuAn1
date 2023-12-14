@@ -39,11 +39,11 @@
                   <?php
                   if ($slide->slider_status == 0) {
                   ?>
-                    <a href="{{URL::to('/unactive-slide/'.$slide->slider_id)}}"><span class="fa-eye-styling fa fa-eye-slash"></span></a>
+                    <a href="{{URL::to('/unactive-slide-product/'.$slide->slider_id)}}"><span class="fa-eye-styling fa fa-eye-slash"></span></a>
                   <?php
                   } else {
                   ?>
-                    <a href="{{URL::to('/active-slide/'.$slide->slider_id)}}"><span class="fa-eye-styling fa fa-eye"></span></a>
+                    <a href="{{URL::to('/active-slide-product/'.$slide->slider_id)}}"><span class="fa-eye-styling fa fa-eye"></span></a>
                   <?php
                   }
                   ?>
