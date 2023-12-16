@@ -73,25 +73,25 @@ class AdminController extends Controller
          }
     }
 
-    public function dashboard_filter(Request $request){
-        $data = $request->all();
-        $dauthangnay = Carbon::now('Asia/Buôn Ma Thuột')->startOfMonth()->toDateString();
-        $dau_thangtruoc = Carbon::now('Asia/Buôn Ma Thuột')->subMonth()->startOfMonth()->toDateString();
-        $cuoi_thangtruoc = Carbon::now('Asia/Buôn Ma Thuột')->subMonth()->endOfMonth()->toDateString();
+    // public function dashboard_filter(Request $request){
+    //     $data = $request->all();
+    //     $dauthangnay = Carbon::now('Asia/Buôn Ma Thuột')->startOfMonth()->toDateString();
+    //     $dau_thangtruoc = Carbon::now('Asia/Buôn Ma Thuột')->subMonth()->startOfMonth()->toDateString();
+    //     $cuoi_thangtruoc = Carbon::now('Asia/Buôn Ma Thuột')->subMonth()->endOfMonth()->toDateString();
 
-        $sub7days= Carbon::now('Asia/Buôn Ma Thuột')->subdays(7)->toDateString();
-        $sub365days= Carbon::now('Asia/Buôn Ma Thuột')->subdays(365)->toDateString();
+    //     $sub7days= Carbon::now('Asia/Buôn Ma Thuột')->subdays(7)->toDateString();
+    //     $sub365days= Carbon::now('Asia/Buôn Ma Thuột')->subdays(365)->toDateString();
 
-        $now= Carbon::now('Asia/Buôn Ma Thuột')->toDateString();
+    //     $now= Carbon::now('Asia/Buôn Ma Thuột')->toDateString();
 
-        if($data['dashboard_value']=='7ngay'){
-            $get = Statistic::whereBetween('order_date',[$sub7days,$now])->orderBy('order_date','ASC')->get();
-        }elseif($data['dashboard_value']=='thangtruoc'){
-            $get = Statistic::whereBetween('order_date',[$dau_thangtruoc,$cuoi_thangtruoc])->orderBy('order_date','ASC')->get();
-        }elseif($data['dashboard_value']=='thangnay'){
-            $get = Statistic::whereBetween('order_date',[$dauthangnay,$now])->orderBy('order_date','ASC')->get();
-        }
-    }
+    //     if($data['dashboard_value']=='7ngay'){
+    //         $get = Statistic::whereBetween('order_date',[$sub7days,$now])->orderBy('order_date','ASC')->get();
+    //     }elseif($data['dashboard_value']=='thangtruoc'){
+    //         $get = Statistic::whereBetween('order_date',[$dau_thangtruoc,$cuoi_thangtruoc])->orderBy('order_date','ASC')->get();
+    //     }elseif($data['dashboard_value']=='thangnay'){
+    //         $get = Statistic::whereBetween('order_date',[$dauthangnay,$now])->orderBy('order_date','ASC')->get();
+    //     }
+    // }
 
         // public function show_dashboard(Request $request){
         //     $this->AuthLogin();

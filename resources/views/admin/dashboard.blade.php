@@ -21,7 +21,7 @@
         <div class="col-md-2"  style="display:inline-block; padding:10px ">
             <p>Đến ngày: <input type="text" id="datepicker2" class="form-control"></p>
         </div>
-        <div class="col-md-2"  style="display:inline-block; padding:10px ">
+        <!-- <div class="col-md-2"  style="display:inline-block; padding:10px ">
             <p>
                 Lọc theo:
                 <select class="dashboard-filter form-control">
@@ -32,7 +32,7 @@
                     <option value="365ngayqua"> 365 ngày qua</option>
                 </select>
             </p>
-        </div>
+        </div> -->
             <p><input type="button" id="btn-dashboard-filter" class="btn btn-primary btn-sm" value="Lọc kết quả"></p>
     </div>
 </form>
