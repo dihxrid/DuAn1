@@ -106,6 +106,8 @@ Route::get('/vnpay-return','App\Http\Controllers\CheckoutController@vnpay_return
 //order
 Route::get('/manage-order','App\Http\Controllers\CheckoutController@manage_order');
 Route::get('/view-order/{orderId}','App\Http\Controllers\CheckoutController@view_order');
+Route::get('/update-order/{orderId}','App\Http\Controllers\CheckoutController@update_order');
+Route::get('/edit-order/{orderId}','App\Http\Controllers\SliderController@edit_order');
 Route::get('/delete-order/{orderId}','App\Http\Controllers\CheckoutController@delete_order');
 Route::get('/accept-order','App\Http\Controllers\CheckoutController@accept_order')->name('accept.order');
 

@@ -35,7 +35,8 @@
                 <td>{{$order->order_total}}</td>
                 <td>{{$order->order_status}}</td>
                 <td class="taskOptions">
-                  <a href="{{URL::to('/view-order',$order->order_id)}}" class="tip-top" data-original-title="View"><i class="fa fa-eye"></i></a>
+                  <a href="{{URL::to('/update-order',$order->order_id)}}" class="tip-top" data-original-title="Update"><i class="icon-ok"></i></a>
+                  <a href="{{URL::to('/view-order',$order->order_id)}}" class="tip-top" data-original-title="View"><i class="icon-eye-open"></i></a>
                   <a href="{{URL::to('/delete-order',$order->order_id)}}" onclick="return confirm('Bạn Có Muốn Xoá?')" class="tip-top" data-original-title="Delete"><i class="icon-remove"></i></a>
                 </td>
               </tr>

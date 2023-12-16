@@ -12,6 +12,7 @@ use Illuminate\support\Facades\Session;
 use Illuminate\support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use TblOrderDetails;
+use App\Models\Slider;
 use App\Models\Customer;
 session_start();
 
@@ -67,9 +68,10 @@ class CheckoutController extends Controller
 
     public function checkout()
     {
+        $slider = Slider::orderBy('slider_id', 'DESC')->get();
         $cate_product  = DB::table('tbl_category_product')->where('category_status', '1')->orderby('category_id', 'desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status', '1')->orderby('brand_id', 'desc')->get();
-        return view('pages.checkout.checkout')->with('category', $cate_product)->with('brand', $brand_product);
+        return view('pages.checkout.checkout')->with('category', $cate_product)->with('brand', $brand_product)->with('slider', $slider);
     }
 
     public function save_checkout( ShippingRequests $request)
@@ -319,6 +321,16 @@ class CheckoutController extends Controller
         // echo '</pre>';
     }
 
+    public function update_order($order_id){
+        $this->AuthenLogin();
+        $data = array();
+        $data ['order_status'] ="Đang giao hàng";
+        DB::table('tbl_order')->where('order_id',$order_id)->update($data);
+        Session::put('message','Cập nhập trạng thái đơn hàng thành công');
+        return Redirect::to('manage-order');
+        
+    }
+    
     public function delete_order($orderId)
     {
         $this->AuthenLogin();

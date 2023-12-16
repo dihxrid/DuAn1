@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use Illuminate\support\Facades\Redirect;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Slider;
 
 session_start();
 class Product extends Controller
@@ -129,6 +130,7 @@ class Product extends Controller
 
     //end function admin page
     public function chi_tiet($product_id){
+        $slider = Slider::orderBy('slider_id', 'DESC')->get();
         $cate_product  = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status','1')->orderby('brand_id','desc')->get();
         $chitiet_product = DB::table('tbl_product')
@@ -141,6 +143,6 @@ class Product extends Controller
         $related_product = DB::table('tbl_product')
         ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
         ->join('tbl_brand_product','tbl_brand_product.brand_id','=','tbl_product.brand_id')->where('tbl_category_product.category_id',$category_id)->whereNotIn('tbl_product.product_id',[$product_id])->get();
-        return view('pages.product.chitiet_product')->with('category',$cate_product)->with('brand',$brand_product)->with('chitiet_product',$chitiet_product)->with('related_product',$related_product);
+        return view('pages.product.chitiet_product')->with('category',$cate_product)->with('brand',$brand_product)->with('chitiet_product',$chitiet_product)->with('related_product',$related_product)->with('slider', $slider);
     }
 }

@@ -22,24 +22,56 @@
     <link rel="stylesheet" href="{{asset('/frontend/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('/frontend/css/style.css')}}" type="text/css">
 
+   
     <style>
     .slider {
-        width: 1200px;
+        position: relative;
         overflow: hidden;
-        margin: 0 auto; /* Canh giữa slider */
+        width: 100%;
+    }
+
+    .dots {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+    }
+
+    .dots li {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #bbb; 
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .dots li.active {
+        background: #333; 
     }
 
     .slide {
-        width: 1200px;
-        height: 400px;
         display: none;
-        text-align: center;
     }
 
-    .active {
+    .slide img {
+        width: 100%; 
+        height: auto;
+        max-height: 400px; 
+        object-fit: cover; 
+    }
+
+    .slide.active {
         display: block;
     }
 </style>
+
+
+
 
 </head>
 
@@ -182,32 +214,6 @@
     <section class="hero">
         <div class="container">
             <div class="row">
-                <!-- <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>Sản Phẩm</span>
-                        </div>
-                        @foreach($category as $key =>$cate)
-                        <ul>
-                            <li><a href="{{URL::to('danh-muc-san-pham/'.$cate->category_id)}}">{{$cate->category_name}}</a></li>
-                        </ul>
-                        @endforeach
-                    </div>
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>Thương Hiệu</span>
-                        </div>
-                        @foreach($brand as $key =>$brand)
-                        <ul>
-                            <li><a href="{{URL::to('thuong-hieu-san-pham/'.$brand->brand_id)}}">{{$brand->brand_name}}</a></li>
-                        </ul>
-                        @endforeach
-                    </div>
-                </div> -->
-
-
                 <div class="col-lg-12">
                     <div class="hero__search">
                         <div class="hero__search__form">
@@ -230,10 +236,17 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="slider">
-                    @foreach($slider as $key => $slide)
-                        <div class="slide active"> <img src="{{URL::to('public/upload/slider/'.$slide->slider_image)}}" alt=""></div>
+                        <ul class="dots">
+                            @for($i = 0; $i < count($slider); $i++) <li data-index="{{ $i }}">
+                                </li>
+                                @endfor
+                        </ul>
+                        @foreach($slider as $key => $slide)
+                        <div class="slide">
+                            <img src="{{URL::to('public/upload/slider/'.$slide->slider_image)}}" alt="">
+                        </div>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
             </div>
         </div>
@@ -309,20 +322,39 @@
         $(document).ready(function() {
             var currentIndex = 0;
             var slides = $('.slide');
+            var dots = $('.dots li');
 
             function showSlide(index) {
                 slides.removeClass('active');
                 slides.eq(index).addClass('active');
+                dots.removeClass('active');
+                dots.eq(index).addClass('active');
             }
 
-            // Initial display
-            showSlide(currentIndex);
+            // Click events for next/prev buttons
+            $('.prev-btn').click(function() {
+                currentIndex = (currentIndex - 1) % slides.length;
+                showSlide(currentIndex);
+            });
 
-            // Interval for automatic sliding (optional)
-            setInterval(function() {
+            $('.next-btn').click(function() {
                 currentIndex = (currentIndex + 1) % slides.length;
                 showSlide(currentIndex);
-            }, 3000); // Change the interval as needed
+            });
+
+            // Click events for dots
+            $('.dots li').click(function() {
+                var newIndex = $(this).data('index');
+                currentIndex = newIndex;
+                showSlide(currentIndex);
+            });
+
+            setInterval(function() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+            }, 3000);
+            // Initial display
+            showSlide(currentIndex);
         });
     </script>
 

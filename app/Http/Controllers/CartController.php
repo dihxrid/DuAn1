@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\support\Facades\Session;
 use Illuminate\support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Models\Slider;
 session_start();
 class CartController extends Controller
 {
@@ -38,9 +39,10 @@ class CartController extends Controller
 
 
 	public function show_cart(){
+        $slider = Slider::orderBy('slider_id', 'DESC')->get();
 		$cate_product  = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status','1')->orderby('brand_id','desc')->get();
-		return view('pages.cart.show_cart')->with('category',$cate_product)->with('brand',$brand_product);
+		return view('pages.cart.show_cart')->with('category',$cate_product)->with('brand',$brand_product)->with('slider', $slider);
 	}
 
 	public function delete_cart($rowId){

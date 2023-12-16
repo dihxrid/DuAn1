@@ -8,6 +8,7 @@ use App\Http\Requests\AddBrandRequests;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use Illuminate\support\Facades\Redirect;
+use App\Models\Slider;
 session_start();
 class BrandProduct extends Controller
 {
@@ -85,11 +86,12 @@ class BrandProduct extends Controller
 
     //End function Admin page
     public function show_brand_home($brand_id){
+        $slider = Slider::orderBy('slider_id', 'DESC')->get();
         $cate_product  = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status','1')->orderby('brand_id','desc')->get();
        $brand_by_id = DB::table('tbl_product')->join('tbl_brand_product','tbl_product.brand_id','=','tbl_brand_product.brand_id')->where('tbl_product.brand_id',$brand_id)->get();
        //xô thương hiệu
-       $brand_name = DB::table('tbl_brand_product')->where('tbl_brand_product.brand_id',$brand_id)->limit(1)->get();
-        return view('pages.brand.show_brand')->with('category',$cate_product)->with('brand',$brand_product)->with('brand_by_id',$brand_by_id)->with('brand_name',$brand_name);
+       $brand_name = DB::table('tbl_brand_product')->where('tbl_brand_product.brand_id',$brand_id)->get();
+        return view('pages.brand.show_brand')->with('category',$cate_product)->with('brand',$brand_product)->with('brand_by_id',$brand_by_id)->with('brand_name',$brand_name)->with('slider', $slider);
     }
 }

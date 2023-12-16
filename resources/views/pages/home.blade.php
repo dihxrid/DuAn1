@@ -11,7 +11,7 @@
             </div>
             <div class="row featured__filter">
                 @foreach($all_product as $key => $product)
-                <div class="col-lg-4 col-md-4 col-sm-6 mix">
+                <div class="col-lg-3 col-md-3 col-sm-6 mix">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="{{URL::to('public/upload/product/'.$product->product_image)}}">
                             <ul class="featured__item__pic__hover">
