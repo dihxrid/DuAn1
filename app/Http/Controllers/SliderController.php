@@ -77,39 +77,39 @@ class SliderController extends Controller
         }
     }
 
-    public function update_slider(Request $request, $slider_id) {
-    $this->AuthenLogin();
-
-    $data = $request->all();
-    $get_image = request('slider_image');
-
-    // Check if image is present for update
-    if ($get_image) {
-        $get_name_image = $get_image->getClientOriginalName();
-        $name_image = current(explode('.', $get_name_image));
-        $new_image = $name_image.rand(0, 99).'.'.$get_image->getClientOriginalExtension();
-
-        $get_image->move('public/upload/slider', $new_image);
-
-        // Update existing slider with new image
-        Slider::where('slider_id', $slider_id)->update([
-            'slider_name' => $data['slider_name'],
-            'slider_image' => $new_image,
-            'slider_status' => $data['slider_status'],
-            'slider_desc' => $data['slider_desc'],
-        ]);
-    } else {
-        // Update existing slider without changing image
-        Slider::where('slider_id', $slider_id)->update([
-            'slider_name' => $data['slider_name'],
-            'slider_status' => $data['slider_status'],
-            'slider_desc' => $data['slider_desc'],
-        ]);
-    }
-
-    Session::put('message', 'Cập nhật thành công');
-    return Redirect::to('update-slide');
+    public function update_slide(Request $request, $id)
+    {
+        $this->AuthenLogin();
     
-}
-
+        $data = $request->all();
+        $slider = Slider::find($id); // tìm ảnh theo id
+    
+        if ($request->hasFile('slider_image')) {
+            $get_image = $request->file('slider_image');
+    
+            $get_name_image = $get_image->getClientOriginalName();
+            $name_image = current(explode('.', $get_name_image));
+            $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
+    
+            $get_image->move('public/upload/slider', $new_image);
+    
+            $slider->slider_image = $new_image; // cập nhật
+    
+            // Remove old image if needed (implement logic based on your needs)
+            // if (!empty($slider->slider_image) && file_exists('public/upload/slider/' . $slider->slider_image)) {
+            //     unlink('public/upload/slider/' . $slider->slider_image);
+            // }
+        }
+    
+        $slider->slider_name = $data['slider_name']; 
+        $slider->slider_status = $data['slider_status'];
+        $slider->slider_desc = $data['slider_desc'];
+    
+        $slider->save();
+    
+        Session::put('message', 'Cập nhật thành công');
+    
+        return Redirect::to('manage-slider');
+    }
+    
 }

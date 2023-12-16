@@ -31,24 +31,27 @@
         @endif
       </div>
       <div class="widget-content nopadding">
-        <form action="{{URL::to('/edit-slide')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
-          {{csrf_field()}}
+      @foreach($edit_slide as $key => $sli)
+        <form action="{{URL::to('/update-slide/'.$sli->slider_id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+          {{csrf_field()}}  
           <div class="control-group">
             <label class="control-label">Tên Slide :</label>
             <div class="controls">
-              <input data-validation="length" data-validation-length="min3" data-validation-error-msg="nhập ít nhất 3 ký tự" type="text" name="slider_name" class="span11" placeholder="Nhập Tên slide" />
+              <input data-validation="length" data-validation-length="min3" data-validation-error-msg="nhập ít nhất 3 ký tự" 
+              type="text" name="slider_name" class="span11" value="{{($sli->slider_name)}}" placeholder="Nhập Tên slide"  />
             </div>
           </div>
           <div class="control-group">
             <label class="control-label">Mô Tả Slide :</label>
             <div class="controls">
-              <textarea style="resize: none;" name="slider_desc" class="span11" rows="6" placeholder="Nhập Mô Tả SLide"></textarea>
+              <textarea style="resize: none;" name="slider_desc" class="span11" rows="6" value="{{($sli->slider_desc)}}" placeholder="Nhập Mô Tả SLide"></textarea>
             </div>
           </div>
           <div class="control-group">
               <label class="control-label">Hình Ảnh Slide :</label>
               <div class="controls">
                 <input type="file" name="slider_image" multiple />
+                <img src="{{URL::to('public/upload/slider/'.$sli->slider_image)}}" width="100" height="100">
               </div>
             </div>
           <div class="control-group">
@@ -60,6 +63,7 @@
               </select>
             </div>
           </div>
+          @endforeach
           <div class="form-actions">
             <button type="submit" name="save_slider" class="btn btn-success">Save</button>
           </div>
