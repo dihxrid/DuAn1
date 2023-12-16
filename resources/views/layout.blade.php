@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{asset('/frontend/css/owl.carousel.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('/frontend/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('/frontend/css/style.css')}}" type="text/css">
+    
 
 
 </head>
@@ -449,7 +450,8 @@
     <script src="{{asset('/frontend/js/mixitup.min.js')}}"></script>
     <script src="{{asset('/frontend/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('/frontend/js/main.js')}}"></script>
-
+    
+    
 
 
 </body>

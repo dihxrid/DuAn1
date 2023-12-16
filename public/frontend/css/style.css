@@ -2951,7 +2951,9 @@ ol {
 	font-size: 18px;
 	letter-spacing: 2px;
 }
-
+.col-md-2{
+	display: flex;
+}
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
 @media only screen and (min-width: 1200px) {

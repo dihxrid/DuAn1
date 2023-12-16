@@ -123,4 +123,9 @@ Route::post('/save-slide','App\Http\Controllers\SliderController@save_slide');
 Route::post('/update-slide/{slider_id}','App\Http\Controllers\SliderController@update_slide');
 Route::post('/insert-slider','App\Http\Controllers\SliderController@insert_slider');
 
+//thống kê
+Route::post('/filter-by-date','App\Http\Controllers\AdminController@filter_by_date');
+Route::post('/dashboard-filter','App\Http\Controllers\AdminController@dashboard_filter');
+Route::post('/admin-dashboard','App\Http\Controllers\AdminController@dashboard');
+Route::get('/dashboard','App\Http\Controllers\AdminController@show_dashboard');
 

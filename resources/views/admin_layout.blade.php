@@ -17,6 +17,9 @@
 <link href="{{asset('/backend/font/css/font-awesome.css')}}" rel="stylesheet" />
 <link href="{{asset('/backend/font/font-awesome.css')}}" rel="stylesheet" />
 <link rel="stylesheet" href="{{asset('/backend/css/jquery.gritter.css')}}" />
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -166,8 +169,104 @@
 <script src="{{asset('/backend/js/matrix.popover.js')}}"></script> 
 <script src="{{asset('/backend/js/jquery.dataTables.min.js')}}"></script> 
 <script src="{{asset('/backend/js/matrix.tables.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="{{asset('/backend/js/bootstrap-wysihtml5.js')}}"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
 <script type="text/javascript">
+    $(document).ready(function(){
+        var colorDanger = "#FF1744";
+            Morris.Donut({
+                element: 'donut',
+                resize: true,
+                colors:[
+                    '#f58733',
+                    '#54ba32',
+                    '#80DEEA',
+                    '#59199e',
+                ],
+                data: [
+                    {label:"Sản phẩm",value:10,color:colorDanger},
+                    {label:"Đơn hàng",value:11},
+                    {label:"Khách Hàng",value:20},
+                    {label:"Danh mục",value:4},
+                   
+                ]
+            });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        chart30daysorder();
+        var chart = new Morris.Line({
+          element: 'chart',
+
+          lineColors:['#819C79','#fc8710','#A4ADD3','#766B56'],
+
+          pointFillColors:['#ffffff'],
+          pointStrokeColors:['black'],
+           fillOpacity: 0.6,
+           hideHover:'auto',
+           parseTime:false,
+
+           xkey:'period',
+
+           ykeys:['order','sales','profit','quantity'],
+           behaveLikeLine:true,
+
+           labels:['đơn hàng','doanh số','lợi nhuận','số lượng']
+        });
+        function chart30daysorder(){
+          var _token = $('input[name='_token']').val();
+          $.ajax({
+             url:"{(url('/days-order))}",
+             method:"POST",
+             dataType:"JSON",
+             data:{_token:_token},
+
+             success:function(data)
+             {
+              chart.setData(data);
+             }
+          });
+        }
+        $('.dashboard-filter').change(function(){
+            var dashboard_value = $(this).val();
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url:"{(url('/dashboard-filter))}",
+                method:"POST",
+                dataType:"JSON",
+                data:{dashboard_value:dashboard_value,_token:_token},
+                success:function(data)
+               {
+                 chart.setData(data);
+               }
+            });
+        });
+
+        $('#btn-dashboard-filter').click(function(){
+    var _token = $('input[name="_token"]').val();
+    var form_date = $('#datepicker').val();
+    var to_date = $('#datepicker2').val();
+     $.ajax({
+      url:"{(url('/filter-by-date))}",
+      method:"POST",
+      dataType:"JSON",
+      data:{form_date:form_date,to_date:to_date,_token:_token},
+      success:function(data)
+      {
+        chart.setData(data);
+      }
+     }) ;
+    });
+  }) ;
+</script>
+<script type="text/javascript">
+  
+
   // This function is called from the pop-up menus to transfer to
   // a different page. Ignore if the value returned is a null string:
   function goPage (newURL) {
@@ -191,8 +290,27 @@ function resetMenu() {
    document.gomenu.selector.selectedIndex = 2;
 }
 </script>
+
 <script>
   $('.textarea_editor').wysihtml5();
+</script>
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+      prevText:"Tháng trước",
+      nextText:"Tháng sau",
+      dateFormat:"yy-mm-dd",
+      dayNamesMin:["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7","Chủ nhật"],
+      duration:"slow",
+    });
+    $( "#datepicker2" ).datepicker({
+      prevText:"Tháng trước",
+      nextText:"Tháng sau",
+      dateFormat:"yy-mm-dd",
+      dayNamesMin:["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7","Chủ nhật"],
+      duration:"slow",
+    });
+  } );
 </script>
 </body>
 </html>
