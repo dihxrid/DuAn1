@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\support\Facades\Redirect;
 use Illuminate\Foundation\Http\FormRequest;
 
-// session_start();
+session_start();
 class Product extends Controller
 {
 
