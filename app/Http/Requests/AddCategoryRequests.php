@@ -26,6 +26,7 @@ class AddCategoryRequests extends FormRequest
         return [
             'category_product_name' => 'required',
             'category_product_desc' => 'required',
+            'category_product_image' => 'required|image|file|max:8192',
         ];
     }
      public function messages()
@@ -33,6 +34,9 @@ class AddCategoryRequests extends FormRequest
         return [
         'category_product_name.required' => 'Tên danh mục không được bỏ trống',
         'category_product_desc.required' => 'Mô tả danh mục không được bỏ trống',
+        'category_product_image.required' => 'Hình ảnh sản phẩm không được bỏ trống',
+        'category_product_image.image' => 'File tải lên phải là file ảnh',
+        'category_product_image.max' => 'Kích thước phải < 8MB',
         ];
     }
 }

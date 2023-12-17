@@ -23,6 +23,7 @@
             <thead>
               <tr>
                 <th>Tên Danh Mục</th>
+                <th>Hình Ảnh Danh Mục</th>
                 <th>Hiển Thị</th>
                 <th>Mô Tả</th>
                 <th style="width:50px;"></th>
@@ -32,6 +33,7 @@
               @foreach($all_category_product as $key => $cate_pro)
               <tr class="gradeX">
                 <td>{{$cate_pro->category_name}}</td>
+                <td><img src="public/upload/category/{{$cate_pro->category_product_image}}" height="100" width="100"></td>
                 <td>
                   <?php
                   if ($cate_pro->category_status == 0) {

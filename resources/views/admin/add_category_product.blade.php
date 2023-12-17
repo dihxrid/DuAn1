@@ -31,12 +31,18 @@
           @endif
         </div>
         <div class="widget-content nopadding">
-          <form action="{{URL::to('/save-category-product')}}" method="post" class="form-horizontal">
+          <form action="{{URL::to('/save-category-product')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
             {{csrf_field()}}
             <div class="control-group">
               <label class="control-label">Tên Danh Mục :</label>
               <div class="controls">
                 <input type="text" name="category_product_name" class="span11" placeholder="Nhập Tên Danh Mục Sản Phẩm" />
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Hình Ảnh Danh Mục :</label>
+              <div class="controls">
+                <input type="file" name="category_product_image" />
               </div>
             </div>
             <div class="control-group">

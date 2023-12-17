@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTfruit | Fresh Fruit </title>
+    <title>HT Fresh Shop </title>
 
     <!-- Google Font -->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet"-->
@@ -22,53 +22,76 @@
     <link rel="stylesheet" href="{{asset('/frontend/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('/frontend/css/style.css')}}" type="text/css">
 
-   
+
     <style>
-    .slider {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-    }
+        .slider {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
 
-    .dots {
-        list-style: none;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        position: absolute;
-        bottom: 10px;
-        width: 100%;
-    }
+        .dots {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+        }
 
-    .dots li {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #bbb; 
-        margin: 0 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
+        .dots li {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #bbb;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-    .dots li.active {
-        background: #333; 
-    }
+        .dots li.active {
+            background: #333;
+        }
 
-    .slide {
-        display: none;
-    }
+        .slide {
+            display: none;
+        }
 
-    .slide img {
-        width: 100%; 
-        height: auto;
-        max-height: 500px; 
-        object-fit: cover; 
-    }
+        .slide img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+        }
 
-    .slide.active {
-        display: block;
-    }
-</style>
+        .prev-btn,
+        .next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .prev-btn {
+            left: 10px;
+        }
+
+        .next-btn {
+            right: 10px;
+        }
+
+
+        .slide.active {
+            display: block;
+        }
+    </style>
 
 
 
@@ -333,15 +356,21 @@
             });
 
             setInterval(function() {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
             }, 3000);
             // Initial display
             showSlide(currentIndex);
         });
     </script>
 
-
+    <script>
+        $('.slider').hover(function() {
+            $('.prev-btn, .next-btn').css('opacity', 1);
+        }, function() {
+            $('.prev-btn, .next-btn').css('opacity', 0);
+        });
+    </script>
 </body>
 
 </html>

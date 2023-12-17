@@ -20,7 +20,7 @@
         </div>
         @foreach($edit_category_product as $key => $edit_value)
         <div class="widget-content nopadding">
-          <form action="{{URL::to('/update-category-product',$edit_value->category_id)}}" method="post" class="form-horizontal">
+          <form action="{{URL::to('/update-category-product',$edit_value->category_id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
             {{csrf_field()}}
             <div class="control-group">
               <label class="control-label">Tên Danh Mục :</label>
@@ -32,6 +32,13 @@
               <label class="control-label">Mô Tả Danh Mục :</label>
               <div class="controls">
                 <textarea style="resize: none;" name="category_product_desc" required="" class="span11" rows="6" placeholder="Nhập Mô Tả Danh Mục">{{$edit_value->category_desc}}</textarea>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Hình Ảnh Danh Mục :</label>
+              <div class="controls">
+                <input type="file" name="category_product_image" required="" multiple/>
+                <img src="{{URL::to('public/upload/category/'.$edit_value->category_product_image)}}" width="100" height="100">
               </div>
             </div>
             <div class="form-actions">

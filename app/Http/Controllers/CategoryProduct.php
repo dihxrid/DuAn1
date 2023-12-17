@@ -38,9 +38,22 @@ class CategoryProduct extends Controller
         $data ['category_name'] = $request->category_product_name;
         $data ['category_desc'] = $request->category_product_desc;
         $data ['category_status'] = $request->category_product_status;
-        DB::table('tbl_category_product')->insert($data);
-        Session::put('message','Thêm thành công');
+        $get_image =$request->file('category_product_image');
+        if($get_image){
+            $get_name_image = $get_image->getClientOriginalName();
+            $name_image = current(explode('.',$get_name_image));
+            $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+            $get_image->move('public/upload/category',$new_image);
+            $data['category_product_image'] = $new_image; 
+            DB::table('tbl_category_product')->insert($data);
+            Session::put('message','Thêm thành công');
+            return Redirect::to('all-category-product');        
+        }
+        $data['category_product_image'] = '';
+        DB::table('tbl_category_product')->insert($data); 
+        Session::put('message','Thêm thất bại');
         return Redirect::to('add-category-product');
+       
     }
 
     public function unactive_category_product ($category_product_id){
@@ -70,11 +83,21 @@ class CategoryProduct extends Controller
         $data = array();
         $data ['category_name'] = $request->category_product_name;
         $data ['category_desc'] = $request->category_product_desc;
+        $get_image =$request->file('category_product_image');
+        if($get_image){
+            $get_name_image = $get_image->getClientOriginalName();
+            $name_image = current(explode('.',$get_name_image));
+            $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+            $get_image->move('public/upload/category',$new_image);
+            $data['category_product_image'] = $new_image; 
+            DB::table('tbl_category_product')->where('category_id',$category_product_id)->update($data);
+            Session::put('message','Thêm thành công');
+            return Redirect::to('all-category-product');        
+        }
+        $data['category_product_image'] = '';
         DB::table('tbl_category_product')->where('category_id',$category_product_id)->update($data);
-        Session::put('message','Cập nhập danh mục thành công');
-        return Redirect::to('all-category-product');
-
-
+        Session::put('message','Thêm thất bại');
+        return Redirect::to('add-category-product');
     }
     public function delete_category_product($category_product_id){
         $this->AuthenLogin();
