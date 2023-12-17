@@ -118,8 +118,8 @@ Route::get('/add-slider','App\Http\Controllers\SliderController@add_slider');
 Route::get('/edit-slide/{slider_id}','App\Http\Controllers\SliderController@edit_slide');
 Route::get('/delete-slide/{slider_id}','App\Http\Controllers\SliderController@delete_slide');
 
-Route::get('/unactive-slide/{slider_id}','App\Http\Controllers\SliderController@unactive_slide');
-Route::get('/active-slide/{slider_id}','App\Http\Controllers\SliderController@active_slide');
+Route::get('/unactive-slide/{slider_id}','App\Http\Controllers\SliderController@unactive_slider');
+Route::get('/active-slide/{slider_id}','App\Http\Controllers\SliderController@active_slider');
 Route::post('/save-slide','App\Http\Controllers\SliderController@save_slide');
 
 Route::post('/update-slide/{slider_id}','App\Http\Controllers\SliderController@update_slide');

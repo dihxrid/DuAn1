@@ -17,7 +17,7 @@ class HomeController extends Controller
     //slide
     public function index()
     {
-        $slider = Slider::orderBy('slider_id', 'DESC')->get();
+        $slider = Slider::orderBy('slider_id', 'DESC')->where('slider_status','1')->get();
         $cate_product  = DB::table('tbl_category_product')->where('category_status', '1')->orderby('category_id', 'desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status', '1')->orderby('brand_id', 'desc')->get();
         $all_product   = DB::table('tbl_product')->where('product_status', '1')->orderby('product_id', 'desc')->get();
@@ -26,7 +26,7 @@ class HomeController extends Controller
     }
     public function tim_kiem(Request $request)
     {
-        $slider = Slider::orderBy('slider_id', 'DESC')->get();
+        $slider = Slider::orderBy('slider_id', 'DESC')->where('slider_status','1')->get();
         $keywords = $request->keywords_submit;
         $cate_product  = DB::table('tbl_category_product')->where('category_status', '1')->orderby('category_id', 'desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status', '1')->orderby('brand_id', 'desc')->get();

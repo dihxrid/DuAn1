@@ -130,7 +130,7 @@ class Product extends Controller
 
     //end function admin page
     public function chi_tiet($product_id){
-        $slider = Slider::orderBy('slider_id', 'DESC')->get();
+        $slider = Slider::orderBy('slider_id', 'DESC')->where('slider_status','1')->get();
         $cate_product  = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand_product')->where('brand_status','1')->orderby('brand_id','desc')->get();
         $chitiet_product = DB::table('tbl_product')

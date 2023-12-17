@@ -22,13 +22,13 @@ class SliderController extends Controller
         $this->AuthenLogin();
         DB::table('tbl_slider')->where('slider_id',$slider_id)->update(['slider_status'=>1]);
         Session::put('message','Hiện slide Thành Công');
-        return Redirect::to('all-slide');   
+        return Redirect::to('manage-slider');   
     }
     public function active_slider ($slider_id){
         $this->AuthenLogin();
-        DB::table('tbl_slider')->where('brand_id',$slider_id)->update(['brand_status'=>0]);
+        DB::table('tbl_slider')->where('slider_id',$slider_id)->update(['slider_status'=>0]);
         Session::put('message','Ẩn slide Thành Công');
-        return Redirect::to('all-slide');
+        return Redirect::to('manage-slider');
     }
     
     public function edit_slide($slider_id){
@@ -70,7 +70,7 @@ class SliderController extends Controller
             $slider->slider_desc = $data['slider_desc'];
             $slider->save();
             Session::put('message','Thêm thành công');
-            return Redirect::to('add-slider');        
+            return Redirect::to('manage-slider');        
         }else{
             Session::put('message','Vui lòng thêm ảnh');
             return Redirect::to('add-slider');     

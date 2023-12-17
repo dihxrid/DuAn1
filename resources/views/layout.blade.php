@@ -61,7 +61,7 @@
     .slide img {
         width: 100%; 
         height: auto;
-        max-height: 400px; 
+        max-height: 500px; 
         object-fit: cover; 
     }
 
@@ -202,18 +202,7 @@
                         <div class="header__cart__price">Tiền hàng: <span>{{Cart::subtotal(0).' '.'VNĐ'}}</span></div>
                     </div>
                 </div>
-            </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div>
-    </header>
-    <!-- Header Section End -->
 
-    <!-- Hero Section Begin -->
-    <section class="hero">
-        <div class="container">
-            <div class="row">
                 <div class="col-lg-12">
                     <div class="hero__search">
                         <div class="hero__search__form">
@@ -234,6 +223,19 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="container">
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="slider">
                         <ul class="dots">
