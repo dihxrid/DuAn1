@@ -1,21 +1,29 @@
 @extends('layout')
 @section('content')
- <!-- Shoping Cart Section Begin -->
-    <section class="shoping-cart spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                     <div class="section-title related__product__title">
-                        <h2>Giỏ Hàng</h2>
-                     </div>
+<!-- Shoping Cart Section Begin -->
+<section class="shoping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title related__product__title">
+                    <h2>Giỏ Hàng</h2>
+                </div>
+                <?php
+                // Kiểm tra nội dung giỏ hàng có trống không
+                if (Cart::count() === 0) {
+                    // Hiển thị thông báo giỏ hàng trống
+                    echo '<p class="empty-cart-message">Giỏ hàng hiện đang trống. Tiếp tục mua sắm để thêm sản phẩm vào giỏ hàng!</p>';
+                } else {
+                    // Hiển thị nội dung giỏ hàng bình thường
+                ?>
                     <div class="shoping__cart__table">
                         {{-- lấy ra những gì đã thềm vào giỏ hàng --}}
                         <?php
                         //use Gloudemans\Shoppingcart\Facades\Cart;
                         $content = Cart::content();
-                        
+
                         ?>
-                        {{--  --}}
+                        {{-- --}}
                         <table>
                             <thead>
                                 <tr>
@@ -40,93 +48,99 @@
                                         <form action="{{URL::to('/update-cart')}}" method="POST">
                                             {{csrf_field()}}
                                             <div class="buttons_added">
-                                              <input class="minus is-form" type="button" value="-"/>
+                                                <input class="minus is-form" type="button" value="-" />
 
-                                              <input name="cart_quantity" class="input-qty" max="99" min="1" type="number" value="{{$v_content->qty}}"/>
+                                                <input name="cart_quantity" class="input-qty" max="99" min="1" type="number" value="{{$v_content->qty}}" />
 
-                                              <input type="hidden" name="rowId_cart" value="{{$v_content->rowId}}" />
+                                                <input type="hidden" name="rowId_cart" value="{{$v_content->rowId}}" />
 
 
-                                              <input class="plus is-form" type="button" value="+"/>
-                                            <input class="primary-btn" type="submit" name="update_qty" value="Cập Nhập">
+                                                <input class="plus is-form" type="button" value="+" />
+                                                <input class="primary-btn" type="submit" name="update_qty" value="Cập Nhập">
                                             </div>
                                         </form>
-                                        
+
                                     </td>
                                     <td class="shoping__cart__total">
                                         <?php
-                                        $subtotal = $v_content->price *$v_content->qty;
-                                        echo number_format($subtotal).' '.'VNĐ'
+                                        $subtotal = $v_content->price * $v_content->qty;
+                                        echo number_format($subtotal) . ' ' . 'VNĐ'
                                         ?>
                                     </td>
                                     <td class="shoping__cart__item__close">
-                                        <a class="icon_close" href="{{URL::to('/delete-cart/'.$v_content->rowId)}}"></a> 
+                                        <a class="icon_close" href="{{URL::to('/delete-cart/'.$v_content->rowId)}}"></a>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
-                </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="shoping__cart__btns">
-                        <a href="{{URL::to('/trang-chu')}}" class="primary-btn">Tiếp Tục Mua Sắm</a>
-                    </div>
-                </form>
-                </div>
-                <div class="col-lg-6">
-                    <div class="shoping__continue">
-                        <!-- <div class="shoping__discount">
+        </div>
+    <?php
+                }
+    ?>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="shoping__cart__btns">
+                <a href="{{URL::to('/trang-chu')}}" class="primary-btn">Tiếp Tục Mua Sắm</a>
+            </div>
+            </form>
+        </div>
+        <div class="col-lg-6">
+            <div class="shoping__continue">
+                <!-- <div class="shoping__discount">
                             <h5>Mã Khuyến Mãi</h5>
                             <form action="#">
                                 <input type="text" placeholder="Enter your coupon code">
                                 <button type="submit" class="site-btn">Nhập</button>
 
                         </div> -->
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="shoping__checkout">
-                        <h5>Tổng Tiền Giỏ Hàng</h5>
-                        <ul>
-                            <li>Sản Phẩm<span>{{Cart::subtotal(0).' '.'VNĐ'}}</span></li>
-                        </ul>
-                        <ul>
-                            <li>Phí Ship<span>0</span></li>
-                        </ul>
-                        <ul>
-                            <li>Thuế<span>{{Cart::discount(0)}}</span></li>
-                        </ul>
-                        <ul>
-                            <li>Mã Giảm Giá<span>không</span></li>
-                        </ul>
-                        <ul>
-                            <li>Tổng Cộng<span>{{Cart::subtotal(0).' '.'VNĐ'}}</span></li>
-                        </ul>
-                        {{-- kiểm tra id khách hàng nếu chưa bắt đăng nhập --}}
-                        <?php
-                                    use Illuminate\Support\Facades\Session;
-                                    $customer_id = Session::get('customer_id');
-                                    if ($customer_id != NULL) {
-
-                                        ?>
-                                        <a href="{{URL::to('/checkout')}}" class="primary-btn">Xác Nhận</a>
-                                        <?php
-                                    }else{
-                                        ?>
-
-                                        <a href="{{URL::to('/login-checkout')}}" class="primary-btn">Xác Nhận</a>
-                                        <?php 
-                                    }      
-                                        ?>
-
-
-                    </div>
-                </div>
             </div>
         </div>
-    </section>
-    <!-- Shoping Cart Section End -->
+        <div class="col-lg-6">
+            <div class="shoping__checkout">
+                <h5>Tổng Tiền Giỏ Hàng</h5>
+                <ul>
+                    <li>Sản Phẩm<span>{{Cart::subtotal(0).' '.'VNĐ'}}</span></li>
+                </ul>
+                <ul>
+                    <li>Phí Ship<span>0</span></li>
+                </ul>
+                <ul>
+                    <li>Thuế<span>{{Cart::discount(0)}}</span></li>
+                </ul>
+                <ul>
+                    <li>Mã Giảm Giá<span>không</span></li>
+                </ul>
+                <ul>
+                    <li>Tổng Cộng<span>{{Cart::subtotal(0).' '.'VNĐ'}}</span></li>
+                </ul>
+                {{-- kiểm tra id khách hàng nếu chưa bắt đăng nhập --}}
+                <?php
+
+                use Illuminate\Support\Facades\Session;
+
+                $customer_id = Session::get('customer_id');
+                if ($customer_id != NULL) {
+
+                ?>
+                    <a href="{{URL::to('/checkout')}}" class="primary-btn">Xác Nhận</a>
+                <?php
+                } else {
+                ?>
+
+                    <a href="{{URL::to('/login-checkout')}}" class="primary-btn">Xác Nhận</a>
+                <?php
+                }
+                ?>
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<!-- Shoping Cart Section End -->
 @endsection

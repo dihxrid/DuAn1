@@ -47,7 +47,7 @@ class CheckoutController extends Controller
         $data['customer_phone'] = $request->customer_phone;
 
         Mail::send('pages.mail.mail_regis', compact('data'), function($email) use($data){
-            $email->subject('HT Fresh Fruit - Xác Nhận Tài Khoản');
+            $email->subject('HT Fresh Shop - Xác Nhận Tài Khoản');
             $email ->to($data['customer_email'],  $data['customer_name']);
             });
             //lưu vào session
@@ -162,7 +162,7 @@ class CheckoutController extends Controller
             $data['name'][]= $customer->customer_name;
            
             Mail::send('pages.mail.mail_order', compact('order_data'), function($email) use($data){
-                $email->subject('HT Fresh Fruit - Xác Nhận Đơn Hàng');
+                $email->subject('HT Fresh Shop - Xác Nhận Đơn Hàng');
                 $email ->to($data['email'],  $data['name']);
                 });
 
@@ -281,7 +281,7 @@ class CheckoutController extends Controller
         $data['name'][]= $customer->customer_name;
        
         Mail::send('pages.mail.mail_order', compact('order_data'), function($email) use($data){
-            $email->subject('HT Fresh Fruit - Xác Nhận Đơn Hàng');
+            $email->subject('HT Fresh Shop - Xác Nhận Đơn Hàng');
             $email ->to($data['email'],  $data['name']);
             });
 
