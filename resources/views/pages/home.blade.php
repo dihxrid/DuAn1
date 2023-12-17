@@ -1,5 +1,27 @@
 @extends('layout')
 @section('content')
+
+<section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="slider">
+                        <ul class="dots">
+                            @for($i = 0; $i < count($slider); $i++) <li data-index="{{ $i }}">
+                                </li>
+                                @endfor
+                        </ul>
+                        @foreach($slider as $key => $slide)
+                        <div class="slide">
+                            <img src="{{URL::to('public/upload/slider/'.$slide->slider_image)}}" alt="">
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section class="featured spad">
         <div class="container">
             <div class="row">
