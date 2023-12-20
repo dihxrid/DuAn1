@@ -96,10 +96,6 @@ class CheckoutController extends Controller
     }
     public function login_customer(Request $request)
     {
-       /* $request->validate([
-            'customer_name' =>'$result',
-            'customer_password' => '$result',
-        ]);*/
         $name = $request->account_name;
         $password = md5($request->account_password);
         $result = DB::table('tbl_customer')->where('customer_name', $name)->where('customer_password', $password)->first();
@@ -107,7 +103,8 @@ class CheckoutController extends Controller
             Session::put('customer_id', $result->customer_id);
             return Redirect::to('/trang-chu');
         } else {
-            return Redirect::to('/login-checkout');  /*->withError('login fails')*/ 
+            Session::flash('error', 'Bạn chưa đăng kí!');
+            return Redirect::to('/login-checkout'); 
         }
        
     }

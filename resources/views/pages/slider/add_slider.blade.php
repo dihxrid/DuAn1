@@ -36,13 +36,13 @@
           <div class="control-group">
             <label class="control-label">Tên Slide :</label>
             <div class="controls">
-              <input data-validation="length" data-validation-length="min3" data-validation-error-msg="nhập ít nhất 3 ký tự" type="text" name="slider_name" class="span11" placeholder="Nhập Tên slide" />
+              <input data-validation="length" data-validation-length="min3" data-validation-error-msg="Nhập ít nhất 3 ký tự" type="text" name="slider_name" class="span11" placeholder="Nhập Tên Slide" />
             </div>
           </div>
           <div class="control-group">
             <label class="control-label">Mô Tả Slide :</label>
             <div class="controls">
-              <textarea style="resize: none;" name="slider_desc" class="span11" rows="6" placeholder="Nhập Mô Tả SLide"></textarea>
+              <textarea style="resize: none;" name="slider_desc" class="span11" rows="6" placeholder="Nhập Mô Tả Slide"></textarea>
             </div>
           </div>
           <div class="control-group">
@@ -52,11 +52,11 @@
               </div>
             </div>
           <div class="control-group">
-            <label class="control-label">Hiện Thị</label>
+            <label class="control-label">Hiển Thị</label>
             <div class="controls">
               <select name="slider_status">
-                <option value="0">Ẩn slide</option>
-                <option value="1">Hiện slide</option>
+                <option value="0">Ẩn</option>
+                <option value="1">Hiện</option>
               </select>
             </div>
           </div>
